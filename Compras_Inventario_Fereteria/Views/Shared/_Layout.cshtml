@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - Compras Inventario Ferreteria</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -17,19 +17,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Compras Inventario Ferreteria", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Accion 1", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Accion 2", "About", "Home")</li>
-                    <li>@Html.ActionLink("Accion 3", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Accion 4", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Accion 5", "About", "Home")</li>
-                    <li>@Html.ActionLink("Accion 6", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Cerrar Sesion", "Logoff", "Cerrar")</li>
-                </ul>
-            </div>
+
+            
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Accion 1", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Accion 2", "About", "Home")</li>
+                        <li>@Html.ActionLink("Accion 3", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Accion 4", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Accion 5", "About", "Home")</li>
+                        <li>@Html.ActionLink("Usuarios", "Index", "usuarios")</li>
+                        <li>@Html.ActionLink("Cerrar Sesion", "Logoff", "Cerrar")</li>
+
+                        @if (Session["User"] != null)
+                        {
+                            <li class="span">Bienvenido @HttpContext.Current.Session["Usuario"]</li>
+                        }
+
+
+
+                        </ul>
+
+                </div>
+           
         </div>
     </div>
     <div class="container body-content">

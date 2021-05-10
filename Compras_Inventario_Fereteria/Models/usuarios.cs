@@ -11,13 +11,27 @@ namespace Compras_Inventario_Fereteria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class usuarios
     {
         public int id_usuario { get; set; }
+
+        [Required]
+        [Display(Name = "Nombre Usuario")]
         public string nombre { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Correo Electronico")]
         public string email { get; set; }
+
+        [Required]
+        [Display(Name = "Contraseña")]
         public string pasword { get; set; }
+
+        [Required]
+        [Display(Name = "Rol")]
         public int id_rol { get; set; }
     
         public virtual roles roles { get; set; }

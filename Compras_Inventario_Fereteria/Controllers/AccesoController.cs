@@ -15,14 +15,14 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string User, string Pass)
+        public ActionResult Login(string Usuario, string Pass)
         {
             try
             {
                 using (Models.InventarioBDEntities db = new Models.InventarioBDEntities())
                 {
                     var oUser = (from d in db.usuarios
-                                 where d.email == User.Trim() && d.pasword == Pass.Trim()
+                                 where d.email == Usuario.Trim() && d.pasword == Pass.Trim()
                                  select d).FirstOrDefault();
                     if (oUser == null)
                     {
@@ -31,6 +31,8 @@ namespace Compras_Inventario_Fereteria.Controllers
                     }
 
                     Session["User"] = oUser;
+                    Session["Usuario"] = Usuario;
+                    ViewBag.User = Usuario;
                 }
 
                 return RedirectToAction("Index", "Home");

@@ -1,0 +1,54 @@
+﻿@model Compras_Inventario_Fereteria.Models.usuarios
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalles</title>
+</head>
+<body>
+    <div>
+        <h4>Usuarios</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.nombre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.pasword)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.pasword)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.roles.nombre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.roles.nombre)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.id_usuario }) |
+        @Html.ActionLink("Regresar", "Index")
+    </p>
+</body>
+</html>
