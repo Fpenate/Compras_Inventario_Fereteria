@@ -132,6 +132,8 @@
     <Compile Include="Controllers\CerrarController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\rolesController.cs" />
+    <Compile Include="Controllers\rol_operacionController.cs" />
     <Compile Include="Controllers\usuariosController.cs" />
     <Compile Include="Filters\AuthorizeUser.cs" />
     <Compile Include="Filters\VerificaSession.cs" />
@@ -228,6 +230,16 @@
     <Content Include="Views\usuarios\Details.cshtml" />
     <Content Include="Views\usuarios\Edit.cshtml" />
     <Content Include="Views\usuarios\Index.cshtml" />
+    <Content Include="Views\roles\Create.cshtml" />
+    <Content Include="Views\roles\Delete.cshtml" />
+    <Content Include="Views\roles\Details.cshtml" />
+    <Content Include="Views\roles\Edit.cshtml" />
+    <Content Include="Views\roles\Index.cshtml" />
+    <Content Include="Views\rol_operacion\Create.cshtml" />
+    <Content Include="Views\rol_operacion\Delete.cshtml" />
+    <Content Include="Views\rol_operacion\Details.cshtml" />
+    <Content Include="Views\rol_operacion\Edit.cshtml" />
+    <Content Include="Views\rol_operacion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

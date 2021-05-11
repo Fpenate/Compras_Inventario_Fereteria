@@ -16,15 +16,17 @@
             <h3><i class="fa fa-warning text-red"></i>Sin autorización</h3>
             @if (ViewBag.operacion != "")
             {
-<p>Operación @ViewBag.operacion </p>            }
+    <p>Operación @ViewBag.operacion </p>}
             @if (ViewBag.modulo != "")
             {
-<p>Modulo @ViewBag.modulo</p>            }
+    <p>Modulo @ViewBag.modulo</p>}
             @if (ViewBag.msjeErrorExcepcion != "")
             {
-<p>@ViewBag.msjeErrorExcepcion</p>            }
+    <p>@ViewBag.msjeErrorExcepcion</p>}
         </div>
+        <p>@Html.ActionLink("REGRESAR", "Index", "Home")</p>
     </div>
     <!-- /.error-page -->
+    
 </section>
 

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Compras_Inventario_Fereteria.Models.rol_operacion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.operacioes.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.roles.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.operacioes.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.roles.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id_rol_operacion }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_rol_operacion }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.id_rol_operacion })
+        </td>
+    </tr>
+}
+
+</table>

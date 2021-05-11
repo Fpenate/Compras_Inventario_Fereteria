@@ -1,0 +1,35 @@
+﻿@model Compras_Inventario_Fereteria.Models.rol_operacion
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Rol operacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.operacioes.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.operacioes.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.roles.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.roles.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_rol_operacion }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

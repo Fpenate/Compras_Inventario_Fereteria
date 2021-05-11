@@ -1,0 +1,41 @@
+﻿@model Compras_Inventario_Fereteria.Models.rol_operacion
+
+@{
+    ViewBag.Title = "Borrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Borrar</h2>
+
+<h3>Esta seguro que desea Borrar este Registro?</h3>
+<div>
+    <h4>Rol operacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.operacioes.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.operacioes.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.roles.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.roles.nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>
