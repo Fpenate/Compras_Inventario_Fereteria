@@ -13,7 +13,7 @@ namespace Compras_Inventario_Fereteria.Controllers
 {
     public class rolesController : Controller
     {
-        private InventarioBDEntities db = new InventarioBDEntities();
+        private InventarioBDEntities1 db = new InventarioBDEntities1();
 
         // GET: roles
         public ActionResult Index()

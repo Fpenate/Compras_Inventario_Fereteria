@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="InventarioBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="InventarioBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="categoria">
           <Key>
             <PropertyRef Name="id_categoria" />
@@ -17,7 +17,6 @@
             <PropertyRef Name="id_compras" />
           </Key>
           <Property Name="id_compras" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_producto" Type="int" Nullable="false" />
           <Property Name="id_empleado" Type="int" Nullable="false" />
           <Property Name="total_compra" Type="float" Nullable="false" />
           <Property Name="cantidad" Type="int" Nullable="false" />
@@ -59,7 +58,6 @@
             <PropertyRef Name="id_proveedor" />
           </Key>
           <Property Name="id_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_producto" Type="int" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="telefono" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="direccion" Type="varchar" MaxLength="100" Nullable="false" />
@@ -109,18 +107,6 @@
             </Principal>
             <Dependent Role="compras">
               <PropertyRef Name="id_empleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_compras_productos">
-          <End Role="productos" Type="Self.productos" Multiplicity="1" />
-          <End Role="compras" Type="Self.compras" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="productos">
-              <PropertyRef Name="id_producto" />
-            </Principal>
-            <Dependent Role="compras">
-              <PropertyRef Name="id_compras" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -211,10 +197,6 @@
             <End Role="empleado" EntitySet="empleado" />
             <End Role="compras" EntitySet="compras" />
           </AssociationSet>
-          <AssociationSet Name="FK_compras_productos" Association="Self.FK_compras_productos">
-            <End Role="productos" EntitySet="productos" />
-            <End Role="compras" EntitySet="compras" />
-          </AssociationSet>
           <AssociationSet Name="FK_empleado_usuarios" Association="Self.FK_empleado_usuarios">
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="empleado" EntitySet="empleado" />
@@ -240,74 +222,29 @@
             <End Role="usuarios" EntitySet="usuarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InventarioBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="InventarioBDEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="categoria" EntityType="InventarioBDModel.categoria" />
-          <EntitySet Name="compras" EntityType="InventarioBDModel.compras" />
-          <EntitySet Name="empleado" EntityType="InventarioBDModel.empleado" />
-          <EntitySet Name="operacioes" EntityType="InventarioBDModel.operacioes" />
-          <EntitySet Name="productos" EntityType="InventarioBDModel.productos" />
-          <EntitySet Name="proveedor" EntityType="InventarioBDModel.proveedor" />
-          <EntitySet Name="rol_operacion" EntityType="InventarioBDModel.rol_operacion" />
-          <EntitySet Name="roles" EntityType="InventarioBDModel.roles" />
-          <EntitySet Name="sysdiagrams" EntityType="InventarioBDModel.sysdiagrams" />
-          <EntitySet Name="usuarios" EntityType="InventarioBDModel.usuarios" />
-          <AssociationSet Name="FK_productos_categoria" Association="InventarioBDModel.FK_productos_categoria">
-            <End Role="categoria" EntitySet="categoria" />
-            <End Role="productos" EntitySet="productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_compras_empleado" Association="InventarioBDModel.FK_compras_empleado">
-            <End Role="empleado" EntitySet="empleado" />
-            <End Role="compras" EntitySet="compras" />
-          </AssociationSet>
-          <AssociationSet Name="FK_compras_productos" Association="InventarioBDModel.FK_compras_productos">
-            <End Role="productos" EntitySet="productos" />
-            <End Role="compras" EntitySet="compras" />
-          </AssociationSet>
-          <AssociationSet Name="FK_empleado_usuarios" Association="InventarioBDModel.FK_empleado_usuarios">
-            <End Role="usuarios" EntitySet="usuarios" />
-            <End Role="empleado" EntitySet="empleado" />
-          </AssociationSet>
-          <AssociationSet Name="FK_rol_operacion_operacioes" Association="InventarioBDModel.FK_rol_operacion_operacioes">
-            <End Role="operacioes" EntitySet="operacioes" />
-            <End Role="rol_operacion" EntitySet="rol_operacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_productos_proveedor" Association="InventarioBDModel.FK_productos_proveedor">
-            <End Role="proveedor" EntitySet="proveedor" />
-            <End Role="productos" EntitySet="productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_rol_operacion_roles" Association="InventarioBDModel.FK_rol_operacion_roles">
-            <End Role="roles" EntitySet="roles" />
-            <End Role="rol_operacion" EntitySet="rol_operacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usuarios_roles" Association="InventarioBDModel.FK_usuarios_roles">
-            <End Role="roles" EntitySet="roles" />
-            <End Role="usuarios" EntitySet="usuarios" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="categoria">
           <Key>
             <PropertyRef Name="id_categoria" />
           </Key>
           <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tipo_categoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="productos" Relationship="InventarioBDModel.FK_productos_categoria" FromRole="categoria" ToRole="productos" />
+          <Property Name="tipo_categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="productos" Relationship="Self.FK_productos_categoria" FromRole="categoria" ToRole="productos" />
         </EntityType>
         <EntityType Name="compras">
           <Key>
             <PropertyRef Name="id_compras" />
           </Key>
           <Property Name="id_compras" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_producto" Type="Int32" Nullable="false" />
           <Property Name="id_empleado" Type="Int32" Nullable="false" />
           <Property Name="total_compra" Type="Double" Nullable="false" />
           <Property Name="cantidad" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="empleado" Relationship="InventarioBDModel.FK_compras_empleado" FromRole="compras" ToRole="empleado" />
-          <NavigationProperty Name="productos" Relationship="InventarioBDModel.FK_compras_productos" FromRole="compras" ToRole="productos" />
+          <NavigationProperty Name="empleado" Relationship="Self.FK_compras_empleado" FromRole="compras" ToRole="empleado" />
         </EntityType>
         <EntityType Name="empleado">
           <Key>
@@ -315,48 +252,46 @@
           </Key>
           <Property Name="id_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_usuario" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="edad" Type="Int32" Nullable="false" />
-          <Property Name="telefono" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="compras" Relationship="InventarioBDModel.FK_compras_empleado" FromRole="empleado" ToRole="compras" />
-          <NavigationProperty Name="usuarios" Relationship="InventarioBDModel.FK_empleado_usuarios" FromRole="empleado" ToRole="usuarios" />
+          <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="compras" Relationship="Self.FK_compras_empleado" FromRole="empleado" ToRole="compras" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_empleado_usuarios" FromRole="empleado" ToRole="usuarios" />
         </EntityType>
         <EntityType Name="operacioes">
           <Key>
             <PropertyRef Name="id_operaciones" />
           </Key>
           <Property Name="id_operaciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="rol_operacion" Relationship="InventarioBDModel.FK_rol_operacion_operacioes" FromRole="operacioes" ToRole="rol_operacion" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="rol_operacion" Relationship="Self.FK_rol_operacion_operacioes" FromRole="operacioes" ToRole="rol_operacion" />
         </EntityType>
         <EntityType Name="productos">
           <Key>
             <PropertyRef Name="id_producto" />
           </Key>
           <Property Name="id_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre_producto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cantidad" Type="Int32" Nullable="false" />
           <Property Name="precio" Type="Double" Nullable="false" />
           <Property Name="id_categoria" Type="Int32" Nullable="false" />
           <Property Name="id_proveedor" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="categoria" Relationship="InventarioBDModel.FK_productos_categoria" FromRole="productos" ToRole="categoria" />
-          <NavigationProperty Name="compras" Relationship="InventarioBDModel.FK_compras_productos" FromRole="productos" ToRole="compras" />
-          <NavigationProperty Name="proveedor" Relationship="InventarioBDModel.FK_productos_proveedor" FromRole="productos" ToRole="proveedor" />
+          <NavigationProperty Name="categoria" Relationship="Self.FK_productos_categoria" FromRole="productos" ToRole="categoria" />
+          <NavigationProperty Name="proveedor" Relationship="Self.FK_productos_proveedor" FromRole="productos" ToRole="proveedor" />
         </EntityType>
         <EntityType Name="proveedor">
           <Key>
             <PropertyRef Name="id_proveedor" />
           </Key>
           <Property Name="id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_producto" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="telefono" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="direccion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="productos" Relationship="InventarioBDModel.FK_productos_proveedor" FromRole="proveedor" ToRole="productos" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="productos" Relationship="Self.FK_productos_proveedor" FromRole="proveedor" ToRole="productos" />
         </EntityType>
         <EntityType Name="rol_operacion">
           <Key>
@@ -365,23 +300,23 @@
           <Property Name="id_rol_operacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_rol" Type="Int32" Nullable="false" />
           <Property Name="id_operacion" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="operacioes" Relationship="InventarioBDModel.FK_rol_operacion_operacioes" FromRole="rol_operacion" ToRole="operacioes" />
-          <NavigationProperty Name="roles" Relationship="InventarioBDModel.FK_rol_operacion_roles" FromRole="rol_operacion" ToRole="roles" />
+          <NavigationProperty Name="operacioes" Relationship="Self.FK_rol_operacion_operacioes" FromRole="rol_operacion" ToRole="operacioes" />
+          <NavigationProperty Name="roles" Relationship="Self.FK_rol_operacion_roles" FromRole="rol_operacion" ToRole="roles" />
         </EntityType>
         <EntityType Name="roles">
           <Key>
             <PropertyRef Name="id_rol" />
           </Key>
           <Property Name="id_rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="rol_operacion" Relationship="InventarioBDModel.FK_rol_operacion_roles" FromRole="roles" ToRole="rol_operacion" />
-          <NavigationProperty Name="usuarios" Relationship="InventarioBDModel.FK_usuarios_roles" FromRole="roles" ToRole="usuarios" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="rol_operacion" Relationship="Self.FK_rol_operacion_roles" FromRole="roles" ToRole="rol_operacion" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_usuarios_roles" FromRole="roles" ToRole="usuarios" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -392,16 +327,16 @@
             <PropertyRef Name="id_usuario" />
           </Key>
           <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="pasword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pasword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="id_rol" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="empleado" Relationship="InventarioBDModel.FK_empleado_usuarios" FromRole="usuarios" ToRole="empleado" />
-          <NavigationProperty Name="roles" Relationship="InventarioBDModel.FK_usuarios_roles" FromRole="usuarios" ToRole="roles" />
+          <NavigationProperty Name="empleado" Relationship="Self.FK_empleado_usuarios" FromRole="usuarios" ToRole="empleado" />
+          <NavigationProperty Name="roles" Relationship="Self.FK_usuarios_roles" FromRole="usuarios" ToRole="roles" />
         </EntityType>
         <Association Name="FK_productos_categoria">
-          <End Type="InventarioBDModel.categoria" Role="categoria" Multiplicity="1" />
-          <End Type="InventarioBDModel.productos" Role="productos" Multiplicity="*" />
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="productos" Type="Self.productos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categoria">
               <PropertyRef Name="id_categoria" />
@@ -412,8 +347,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_compras_empleado">
-          <End Type="InventarioBDModel.empleado" Role="empleado" Multiplicity="1" />
-          <End Type="InventarioBDModel.compras" Role="compras" Multiplicity="*" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+          <End Role="compras" Type="Self.compras" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="empleado">
               <PropertyRef Name="id_empleado" />
@@ -423,21 +358,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_compras_productos">
-          <End Type="InventarioBDModel.productos" Role="productos" Multiplicity="1" />
-          <End Type="InventarioBDModel.compras" Role="compras" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="productos">
-              <PropertyRef Name="id_producto" />
-            </Principal>
-            <Dependent Role="compras">
-              <PropertyRef Name="id_compras" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_empleado_usuarios">
-          <End Type="InventarioBDModel.usuarios" Role="usuarios" Multiplicity="1" />
-          <End Type="InventarioBDModel.empleado" Role="empleado" Multiplicity="*" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
               <PropertyRef Name="id_usuario" />
@@ -448,8 +371,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_rol_operacion_operacioes">
-          <End Type="InventarioBDModel.operacioes" Role="operacioes" Multiplicity="1" />
-          <End Type="InventarioBDModel.rol_operacion" Role="rol_operacion" Multiplicity="*" />
+          <End Role="operacioes" Type="Self.operacioes" Multiplicity="1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="operacioes">
               <PropertyRef Name="id_operaciones" />
@@ -460,8 +383,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_productos_proveedor">
-          <End Type="InventarioBDModel.proveedor" Role="proveedor" Multiplicity="1" />
-          <End Type="InventarioBDModel.productos" Role="productos" Multiplicity="*" />
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+          <End Role="productos" Type="Self.productos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="proveedor">
               <PropertyRef Name="id_proveedor" />
@@ -472,8 +395,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_rol_operacion_roles">
-          <End Type="InventarioBDModel.roles" Role="roles" Multiplicity="1" />
-          <End Type="InventarioBDModel.rol_operacion" Role="rol_operacion" Multiplicity="*" />
+          <End Role="roles" Type="Self.roles" Multiplicity="1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="roles">
               <PropertyRef Name="id_rol" />
@@ -484,8 +407,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_usuarios_roles">
-          <End Type="InventarioBDModel.roles" Role="roles" Multiplicity="1" />
-          <End Type="InventarioBDModel.usuarios" Role="usuarios" Multiplicity="*" />
+          <End Role="roles" Type="Self.roles" Multiplicity="1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="roles">
               <PropertyRef Name="id_rol" />
@@ -495,114 +418,152 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="InventarioBDEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categoria" EntityType="Self.categoria" />
+          <EntitySet Name="compras" EntityType="Self.compras" />
+          <EntitySet Name="empleado" EntityType="Self.empleado" />
+          <EntitySet Name="operacioes" EntityType="Self.operacioes" />
+          <EntitySet Name="productos" EntityType="Self.productos" />
+          <EntitySet Name="proveedor" EntityType="Self.proveedor" />
+          <EntitySet Name="rol_operacion" EntityType="Self.rol_operacion" />
+          <EntitySet Name="roles" EntityType="Self.roles" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <AssociationSet Name="FK_productos_categoria" Association="Self.FK_productos_categoria">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compras_empleado" Association="Self.FK_compras_empleado">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_empleado_usuarios" Association="Self.FK_empleado_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_operacion_operacioes" Association="Self.FK_rol_operacion_operacioes">
+            <End Role="operacioes" EntitySet="operacioes" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_productos_proveedor" Association="Self.FK_productos_proveedor">
+            <End Role="proveedor" EntitySet="proveedor" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_operacion_roles" Association="Self.FK_rol_operacion_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarios_roles" Association="Self.FK_usuarios_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="InventarioBDModelStoreContainer" CdmEntityContainer="InventarioBDEntities">
+        <EntityContainerMapping StorageEntityContainer="InventarioBDModelStoreContainer" CdmEntityContainer="InventarioBDEntities1">
           <EntitySetMapping Name="categoria">
             <EntityTypeMapping TypeName="InventarioBDModel.categoria">
               <MappingFragment StoreEntitySet="categoria">
-                <ScalarProperty Name="tipo_categoria" ColumnName="tipo_categoria" />
                 <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="tipo_categoria" ColumnName="tipo_categoria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="compras">
             <EntityTypeMapping TypeName="InventarioBDModel.compras">
               <MappingFragment StoreEntitySet="compras">
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="total_compra" ColumnName="total_compra" />
-                <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
-                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
                 <ScalarProperty Name="id_compras" ColumnName="id_compras" />
+                <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+                <ScalarProperty Name="total_compra" ColumnName="total_compra" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="empleado">
             <EntityTypeMapping TypeName="InventarioBDModel.empleado">
               <MappingFragment StoreEntitySet="empleado">
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="edad" ColumnName="edad" />
-                <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="operacioes">
             <EntityTypeMapping TypeName="InventarioBDModel.operacioes">
               <MappingFragment StoreEntitySet="operacioes">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id_operaciones" ColumnName="id_operaciones" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="productos">
             <EntityTypeMapping TypeName="InventarioBDModel.productos">
               <MappingFragment StoreEntitySet="productos">
-                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
-                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="nombre_producto" ColumnName="nombre_producto" />
                 <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="nombre_producto" ColumnName="nombre_producto" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="proveedor">
             <EntityTypeMapping TypeName="InventarioBDModel.proveedor">
               <MappingFragment StoreEntitySet="proveedor">
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="direccion" ColumnName="direccion" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
                 <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="rol_operacion">
             <EntityTypeMapping TypeName="InventarioBDModel.rol_operacion">
               <MappingFragment StoreEntitySet="rol_operacion">
-                <ScalarProperty Name="id_operacion" ColumnName="id_operacion" />
-                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
                 <ScalarProperty Name="id_rol_operacion" ColumnName="id_rol_operacion" />
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+                <ScalarProperty Name="id_operacion" ColumnName="id_operacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="roles">
             <EntityTypeMapping TypeName="InventarioBDModel.roles">
               <MappingFragment StoreEntitySet="roles">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="InventarioBDModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="usuarios">
             <EntityTypeMapping TypeName="InventarioBDModel.usuarios">
               <MappingFragment StoreEntitySet="usuarios">
-                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
-                <ScalarProperty Name="pasword" ColumnName="pasword" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pasword" ColumnName="pasword" />
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

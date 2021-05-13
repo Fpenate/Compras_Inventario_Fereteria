@@ -12,12 +12,12 @@ namespace Compras_Inventario_Fereteria.Controllers
 {
     public class productosController : Controller
     {
-        private InventarioBDEntities db = new InventarioBDEntities();
+        private InventarioBDEntities1 db = new InventarioBDEntities1();
 
         // GET: productos
         public ActionResult Index()
         {
-            var productos = db.productos.Include(p => p.categoria).Include(p => p.compras).Include(p => p.proveedor);
+            var productos = db.productos.Include(p => p.categoria).Include(p => p.proveedor);
             return View(productos.ToList());
         }
 
@@ -40,7 +40,6 @@ namespace Compras_Inventario_Fereteria.Controllers
         public ActionResult Create()
         {
             ViewBag.id_categoria = new SelectList(db.categoria, "id_categoria", "tipo_categoria");
-            ViewBag.id_producto = new SelectList(db.compras, "id_compras", "id_compras");
             ViewBag.id_proveedor = new SelectList(db.proveedor, "id_proveedor", "nombre");
             return View();
         }
@@ -60,7 +59,6 @@ namespace Compras_Inventario_Fereteria.Controllers
             }
 
             ViewBag.id_categoria = new SelectList(db.categoria, "id_categoria", "tipo_categoria", productos.id_categoria);
-            ViewBag.id_producto = new SelectList(db.compras, "id_compras", "id_compras", productos.id_producto);
             ViewBag.id_proveedor = new SelectList(db.proveedor, "id_proveedor", "nombre", productos.id_proveedor);
             return View(productos);
         }
@@ -78,7 +76,6 @@ namespace Compras_Inventario_Fereteria.Controllers
                 return HttpNotFound();
             }
             ViewBag.id_categoria = new SelectList(db.categoria, "id_categoria", "tipo_categoria", productos.id_categoria);
-            ViewBag.id_producto = new SelectList(db.compras, "id_compras", "id_compras", productos.id_producto);
             ViewBag.id_proveedor = new SelectList(db.proveedor, "id_proveedor", "nombre", productos.id_proveedor);
             return View(productos);
         }
@@ -97,7 +94,6 @@ namespace Compras_Inventario_Fereteria.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.id_categoria = new SelectList(db.categoria, "id_categoria", "tipo_categoria", productos.id_categoria);
-            ViewBag.id_producto = new SelectList(db.compras, "id_compras", "id_compras", productos.id_producto);
             ViewBag.id_proveedor = new SelectList(db.proveedor, "id_proveedor", "nombre", productos.id_proveedor);
             return View(productos);
         }

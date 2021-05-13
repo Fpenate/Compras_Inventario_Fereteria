@@ -12,12 +12,12 @@ namespace Compras_Inventario_Fereteria.Controllers
 {
     public class comprasController : Controller
     {
-        private InventarioBDEntities db = new InventarioBDEntities();
+        private InventarioBDEntities1 db = new InventarioBDEntities1();
 
         // GET: compras
         public ActionResult Index()
         {
-            var compras = db.compras.Include(c => c.empleado).Include(c => c.productos);
+            var compras = db.compras.Include(c => c.empleado);
             return View(compras.ToList());
         }
 
@@ -40,7 +40,6 @@ namespace Compras_Inventario_Fereteria.Controllers
         public ActionResult Create()
         {
             ViewBag.id_empleado = new SelectList(db.empleado, "id_empleado", "nombre");
-            ViewBag.id_compras = new SelectList(db.productos, "id_producto", "nombre_producto");
             return View();
         }
 
@@ -49,7 +48,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_compras,id_producto,id_empleado,total_compra,cantidad,fecha")] compras compras)
+        public ActionResult Create([Bind(Include = "id_compras,id_empleado,total_compra,cantidad,fecha")] compras compras)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +58,6 @@ namespace Compras_Inventario_Fereteria.Controllers
             }
 
             ViewBag.id_empleado = new SelectList(db.empleado, "id_empleado", "nombre", compras.id_empleado);
-            ViewBag.id_compras = new SelectList(db.productos, "id_producto", "nombre_producto", compras.id_compras);
             return View(compras);
         }
 
@@ -76,7 +74,6 @@ namespace Compras_Inventario_Fereteria.Controllers
                 return HttpNotFound();
             }
             ViewBag.id_empleado = new SelectList(db.empleado, "id_empleado", "nombre", compras.id_empleado);
-            ViewBag.id_compras = new SelectList(db.productos, "id_producto", "nombre_producto", compras.id_compras);
             return View(compras);
         }
 
@@ -85,7 +82,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_compras,id_producto,id_empleado,total_compra,cantidad,fecha")] compras compras)
+        public ActionResult Edit([Bind(Include = "id_compras,id_empleado,total_compra,cantidad,fecha")] compras compras)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +91,6 @@ namespace Compras_Inventario_Fereteria.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.id_empleado = new SelectList(db.empleado, "id_empleado", "nombre", compras.id_empleado);
-            ViewBag.id_compras = new SelectList(db.productos, "id_producto", "nombre_producto", compras.id_compras);
             return View(compras);
         }
 

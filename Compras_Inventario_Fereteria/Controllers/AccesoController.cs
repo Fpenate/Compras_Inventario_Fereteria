@@ -19,7 +19,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         {
             try
             {
-                using (Models.InventarioBDEntities db = new Models.InventarioBDEntities())
+                using (Models.InventarioBDEntities1 db = new Models.InventarioBDEntities1())
                 {
                     var oUser = (from d in db.usuarios
                                  where d.email == Usuario.Trim() && d.pasword == Pass.Trim()

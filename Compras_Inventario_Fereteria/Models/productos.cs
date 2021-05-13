@@ -23,7 +23,6 @@ namespace Compras_Inventario_Fereteria.Models
         public int id_proveedor { get; set; }
     
         public virtual categoria categoria { get; set; }
-        public virtual compras compras { get; set; }
         public virtual proveedor proveedor { get; set; }
     }
 }

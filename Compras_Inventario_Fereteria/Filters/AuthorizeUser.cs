@@ -11,7 +11,7 @@ namespace Compras_Inventario_Fereteria.Filters
     public class AuthorizeUser : AuthorizeAttribute
     {
         private usuarios oUsuario;
-        private InventarioBDEntities db = new InventarioBDEntities();
+        private InventarioBDEntities1 db = new InventarioBDEntities1();
         private int idOperacion;
 
         public AuthorizeUser(int idOperacion = 0)

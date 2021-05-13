@@ -13,7 +13,7 @@ namespace Compras_Inventario_Fereteria.Controllers
 {
     public class usuariosController : Controller
     {
-        private InventarioBDEntities db = new InventarioBDEntities();
+        private InventarioBDEntities1 db = new InventarioBDEntities1();
 
         // GET: usuarios
         public ActionResult Index()

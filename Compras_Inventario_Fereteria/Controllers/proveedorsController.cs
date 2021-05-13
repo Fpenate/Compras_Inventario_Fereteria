@@ -10,17 +10,17 @@ using Compras_Inventario_Fereteria.Models;
 
 namespace Compras_Inventario_Fereteria.Controllers
 {
-    public class proveedorController : Controller
+    public class proveedorsController : Controller
     {
-        private InventarioBDEntities db = new InventarioBDEntities();
+        private InventarioBDEntities1 db = new InventarioBDEntities1();
 
-        // GET: proveedor
+        // GET: proveedors
         public ActionResult Index()
         {
             return View(db.proveedor.ToList());
         }
 
-        // GET: proveedor/Details/5
+        // GET: proveedors/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,18 +35,18 @@ namespace Compras_Inventario_Fereteria.Controllers
             return View(proveedor);
         }
 
-        // GET: proveedor/Create
+        // GET: proveedors/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: proveedor/Create
+        // POST: proveedors/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_proveedor,id_producto,nombre,telefono,direccion,email")] proveedor proveedor)
+        public ActionResult Create([Bind(Include = "id_proveedor,nombre,telefono,direccion,email")] proveedor proveedor)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             return View(proveedor);
         }
 
-        // GET: proveedor/Edit/5
+        // GET: proveedors/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,12 +73,12 @@ namespace Compras_Inventario_Fereteria.Controllers
             return View(proveedor);
         }
 
-        // POST: proveedor/Edit/5
+        // POST: proveedors/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_proveedor,id_producto,nombre,telefono,direccion,email")] proveedor proveedor)
+        public ActionResult Edit([Bind(Include = "id_proveedor,nombre,telefono,direccion,email")] proveedor proveedor)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             return View(proveedor);
         }
 
-        // GET: proveedor/Delete/5
+        // GET: proveedors/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             return View(proveedor);
         }
 
-        // POST: proveedor/Delete/5
+        // POST: proveedors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -12,7 +12,7 @@ namespace Compras_Inventario_Fereteria.Controllers
 {
     public class empleadosController : Controller
     {
-        private InventarioBDEntities db = new InventarioBDEntities();
+        private InventarioBDEntities1 db = new InventarioBDEntities1();
 
         // GET: empleados
         public ActionResult Index()

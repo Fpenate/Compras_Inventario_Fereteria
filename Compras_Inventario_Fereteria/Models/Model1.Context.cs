@@ -13,10 +13,10 @@ namespace Compras_Inventario_Fereteria.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class InventarioBDEntities : DbContext
+    public partial class InventarioBDEntities1 : DbContext
     {
-        public InventarioBDEntities()
-            : base("name=InventarioBDEntities")
+        public InventarioBDEntities1()
+            : base("name=InventarioBDEntities1")
         {
         }
     

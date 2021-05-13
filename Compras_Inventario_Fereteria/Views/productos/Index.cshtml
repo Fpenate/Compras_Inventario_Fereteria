@@ -7,11 +7,9 @@
 
 <h2>Index</h2>
 
-<li class="btn btn-default" >
+<p>
     @Html.ActionLink("Create New", "Create")
-</li>
-<br />
-<br />
+</p>
 <table class="table">
     <tr>
         <th>
@@ -28,9 +26,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.categoria.tipo_categoria)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.compras.id_compras)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.proveedor.nombre)
@@ -54,9 +49,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.categoria.tipo_categoria)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.compras.id_compras)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.proveedor.nombre)
