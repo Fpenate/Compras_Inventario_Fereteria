@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Compras_Inventario_Fereteria.Models.productos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<li class="btn btn-default" >
+    @Html.ActionLink("Create New", "Create")
+</li>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre_producto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.categoria.tipo_categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compras.id_compras)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.proveedor.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre_producto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categoria.tipo_categoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.compras.id_compras)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.proveedor.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_producto }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_producto }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_producto })
+        </td>
+    </tr>
+}
+
+</table>

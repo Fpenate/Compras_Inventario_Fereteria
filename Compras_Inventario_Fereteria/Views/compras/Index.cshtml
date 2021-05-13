@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Compras_Inventario_Fereteria.Models.compras>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_producto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total_compra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empleado.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productos.nombre_producto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_producto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total_compra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empleado.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.productos.nombre_producto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_compras }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_compras }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_compras })
+        </td>
+    </tr>
+}
+
+</table>

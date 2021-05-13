@@ -12,22 +12,18 @@ namespace Compras_Inventario_Fereteria.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class usuarios
+    public partial class categoria
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public usuarios()
+        public categoria()
         {
-            this.empleado = new HashSet<empleado>();
+            this.productos = new HashSet<productos>();
         }
     
-        public int id_usuario { get; set; }
-        public string nombre { get; set; }
-        public string email { get; set; }
-        public string pasword { get; set; }
-        public int id_rol { get; set; }
+        public int id_categoria { get; set; }
+        public string tipo_categoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<empleado> empleado { get; set; }
-        public virtual roles roles { get; set; }
+        public virtual ICollection<productos> productos { get; set; }
     }
 }

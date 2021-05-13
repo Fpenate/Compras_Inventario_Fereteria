@@ -1,0 +1,27 @@
+﻿@model Compras_Inventario_Fereteria.Models.categoria
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>categoria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_categoria)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_categoria }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
