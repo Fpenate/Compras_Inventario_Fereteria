@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Editar</h2>
+<h1>Editar</h1>
 
 @using (Html.BeginForm())
 {
@@ -18,7 +18,7 @@
         @Html.HiddenFor(model => model.id_rol_operacion)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_rol, "Id Rol", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_rol, "Rol", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("id_rol", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_rol, "", new { @class = "text-danger" })
@@ -35,12 +35,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Regresar", "Index")
+    <button class="btn btn-default" onclick="location.href='@Url.Action("index")';return false;">Regresar</button>
 </div>

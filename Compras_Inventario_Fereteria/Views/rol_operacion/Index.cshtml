@@ -5,15 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Rol Operaciones</h2>
 
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create")
+    <button class="btn btn-success " onclick="location.href='@Url.Action("Create")';return false;">Crear Nuevo</button>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.operacioes.nombre)
+            @Html.DisplayNameFor(model => model.operacioes)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.roles.nombre)
@@ -30,11 +30,13 @@
             @Html.DisplayFor(modelItem => item.roles.nombre)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.id_rol_operacion }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.id_rol_operacion }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.id_rol_operacion })
+            <button class="btn btn-info" onclick="location.href='@Url.Action("Edit",new { id = item.id_rol_operacion })';return false;">Editar</button>
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.id_rol_operacion })';return false;">Detalles</button>
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.id_rol_operacion })';return false;">Borrar</button>
         </td>
     </tr>
 }
 
 </table>
+
+<button class="btn btn-default" onclick="location.href='@Url.Action("Index","usuarios")';return false;">Regresar</button>

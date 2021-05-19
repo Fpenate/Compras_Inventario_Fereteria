@@ -9,6 +9,8 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/autofill/2.3.6/css/autoFill.dataTables.min.css" />
+
     <script src="https://kit.fontawesome.com/4aecce847f.js" crossorigin="anonymous"></script>
 </head>
 
@@ -21,6 +23,8 @@
         @Html.ActionLink("Inicio", "Index", "Home")
         @Html.ActionLink("Acerca de", "About", "Home")
         @Html.ActionLink("Contacto", "Contact", "Home")
+        @Html.ActionLink("Cerrar Sesion", "Logoff", "Cerrar")
+        <br />
         @Html.ActionLink("Gestion de Usuarios", "Index", "usuarios")
         <br>
         <br>
@@ -84,7 +88,7 @@
 
     <script src="~/Scripts/myscripts.js"></script>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-
+    <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
@@ -93,5 +97,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery-ui.js")
     @Scripts.Render("~/Scripts/DatePickerReady.js")
+
+
 </body>
 </html>

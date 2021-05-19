@@ -52,10 +52,10 @@
         @using (Html.BeginForm()) {
             @Html.AntiForgeryToken()
     
-            <div class="form-actions no-color">
-                <input type="submit" value="Borrar" class="btn btn-default" /> |
-                @Html.ActionLink("Regresar", "Index")
-            </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        <button class="btn btn-default " onclick="location.href='@Url.Action("Index")';return false;">Regresar</button>
+    </div>
         }
     </div>
 </body>

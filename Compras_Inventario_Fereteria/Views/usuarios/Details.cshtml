@@ -9,7 +9,7 @@
 </head>
 <body>
     <div>
-        <h4>Usuarios</h4>
+        <h2>Detalles de Usuario</h2>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -37,7 +37,7 @@
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.roles.nombre)
+                @Html.DisplayNameFor(model => model.roles)
             </dt>
     
             <dd>
@@ -47,8 +47,8 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Editar", "Edit", new { id = Model.id_usuario }) |
-        @Html.ActionLink("Regresar", "Index")
-    </p>
+        <button class="btn btn-default " onclick="location.href='@Url.Action("Edit", new { id = Model.id_usuario })';return false;">Editar</button>
+        <button class="btn btn-default " onclick="location.href='@Url.Action("Index", new { id = Model.id_usuario })';return false;">Regresar</button>
+       
 </body>
 </html>

@@ -5,11 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Borrar</h2>
 
-<h3>Estas seguro que deseas Borrar este registro?</h3>
+<h2>Estas seguro que deseas Borrar este registro?</h2>
 <div>
-    <h4>Roles</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -25,9 +24,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Borrar" class="btn btn-default" /> |
-            @Html.ActionLink("Regresar", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Borrar" class="btn btn-danger" /> |
+    <button class="btn btn-success " onclick="location.href='@Url.Action("index")';return false;">Regresar</button>
+</div>
     }
 </div>

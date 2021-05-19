@@ -6,11 +6,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Usuarios</title>
 </head>
 <body>
+    <h1>Usuarios</h1>
     <p>
-        @Html.ActionLink("Crear Nuevo", "Create")
+        <button class="btn btn-success " onclick="location.href='@Url.Action("Create")';return false;">Crear Nuevo</button>
     </p>
     <table class="table">
         <tr>
@@ -24,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.pasword)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.roles.nombre)
+                @Html.DisplayNameFor(model => model.roles)
             </th>
             <th></th>
         </tr>
@@ -45,18 +46,22 @@
                     @Html.DisplayFor(modelItem => item.roles.nombre)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.id_usuario }) |
-                    @Html.ActionLink("Detalles", "Details", new { id = item.id_usuario }) |
-                    @Html.ActionLink("Borrar", "Delete", new { id = item.id_usuario })
+                    <button class="btn btn-info" onclick="location.href='@Url.Action("Edit",new { id = item.id_usuario })';return false;">Editar</button>
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.id_usuario })';return false;">Detalles</button>
+                    <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.id_usuario })';return false;">Borrar</button>
                 </td>
             </tr>
         }
 
     </table>
-    <p>@Html.ActionLink("Mantto Roles", "Index", "roles")</p>
-    <p>@Html.ActionLink("Rol Operaciones", "Index", "rol_operacion")</p>
+    <br />
+    <h3>Opciones de Mantenimiento de Roles</h3>
+    <button class="btn btn-primary" onclick="location.href='@Url.Action("Index","roles")';return false;">Roles</button>
+    <button class="btn btn-primary" onclick="location.href='@Url.Action("Index","rol_operacion")';return false;">Rol Operaciones</button>
     <br />
     <br />
-    <p>@Html.ActionLink("REGRESAR", "Index", "Home")</p>
+    <br />
+    <br />
+    <button class="btn btn-default" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio</button>
 </body>
 </html>

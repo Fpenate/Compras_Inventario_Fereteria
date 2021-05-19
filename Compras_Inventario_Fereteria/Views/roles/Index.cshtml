@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<Compras_Inventario_Fereteria.Models.roles>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Roles";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h1>Roles</h1>
 
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create")
+    <button class="btn btn-success " onclick="location.href='@Url.Action("Create")';return false;">Crear Nuevo</button>
 </p>
 <table class="table">
     <tr>
@@ -24,11 +24,13 @@
             @Html.DisplayFor(modelItem => item.nombre)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.id_rol }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.id_rol }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.id_rol })
+            <button class="btn btn-info" onclick="location.href='@Url.Action("Edit",new { id = item.id_rol })';return false;">Editar</button>
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.id_rol })';return false;">Detalles</button>
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.id_rol })';return false;">Borrar</button>
         </td>
     </tr>
 }
 
 </table>
+
+<button class="btn btn-default" onclick="location.href='@Url.Action("Index","usuarios")';return false;">Regresar</button>

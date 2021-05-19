@@ -5,26 +5,31 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Error, no tienes permiso
+        Error, no tienes permiso para realizar esta Accion!
     </h1>
 </section>
 <!-- Main content -->
 <section class="content">
-    <div class="error-page">
-        <h2 class="headline text-red">Error</h2>
+    <div class="col-md-offset-0 row justify-content-center">
         <div class="error-content">
-            <h3><i class="fa fa-warning text-red"></i>Sin autorización</h3>
+            <h2><i class="fa fa-warning text-red"></i>  Sin autorización</h2>
             @if (ViewBag.operacion != "")
             {
-    <p>Operación @ViewBag.operacion </p>}
+        <p>Operación @ViewBag.operacion </p>}
             @if (ViewBag.modulo != "")
             {
-    <p>Modulo @ViewBag.modulo</p>}
+        <p>Modulo @ViewBag.modulo</p>}
             @if (ViewBag.msjeErrorExcepcion != "")
             {
-    <p>@ViewBag.msjeErrorExcepcion</p>}
+        <p>@ViewBag.msjeErrorExcepcion</p>}
+
+            <img src="~/Content/images/error.jpg" width="500" height="300" />
         </div>
-        <p>@Html.ActionLink("REGRESAR", "Index", "Home")</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <button class="btn btn-default" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio</button>
     </div>
     <!-- /.error-page -->
     

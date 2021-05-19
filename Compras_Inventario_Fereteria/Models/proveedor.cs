@@ -11,7 +11,8 @@ namespace Compras_Inventario_Fereteria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class proveedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,9 +22,22 @@ namespace Compras_Inventario_Fereteria.Models
         }
     
         public int id_proveedor { get; set; }
+
+        [Required()]
+        [Display(Name = "Nombre de Proveedor")]
         public string nombre { get; set; }
+
+        [Required()]
+        [Display(Name = "Telefono")]
         public string telefono { get; set; }
+
+        [Required()]
+        [Display(Name = "Direccion")]
         public string direccion { get; set; }
+
+        [Required()]
+        [Display(Name = "Correo Electronico")]
+        [DataType(DataType.EmailAddress)]
         public string email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

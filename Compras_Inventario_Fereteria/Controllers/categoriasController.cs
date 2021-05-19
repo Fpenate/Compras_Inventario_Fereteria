@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Compras_Inventario_Fereteria.Filters;
 using Compras_Inventario_Fereteria.Models;
 
 namespace Compras_Inventario_Fereteria.Controllers
@@ -36,6 +37,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: categorias/Create
+        [AuthorizeUser(idOperacion: 3)]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +61,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: categorias/Edit/5
+        [AuthorizeUser(idOperacion: 3)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +93,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: categorias/Delete/5
+        [AuthorizeUser(idOperacion: 3)]
         public ActionResult Delete(int? id)
         {
             if (id == null)

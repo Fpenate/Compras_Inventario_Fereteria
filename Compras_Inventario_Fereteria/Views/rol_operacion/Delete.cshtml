@@ -9,11 +9,10 @@
 
 <h3>Esta seguro que desea Borrar este Registro?</h3>
 <div>
-    <h4>Rol operacion</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.operacioes.nombre)
+            @Html.DisplayNameFor(model => model.operacioes)
         </dt>
 
         <dd>
@@ -33,9 +32,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Borrar" class="btn btn-default" /> |
-            @Html.ActionLink("Regresar", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Borrar" class="btn btn-danger" /> |
+    <button class="btn btn-default " onclick="location.href='@Url.Action("index")';return false;">Regresar</button>
+</div>
     }
 </div>

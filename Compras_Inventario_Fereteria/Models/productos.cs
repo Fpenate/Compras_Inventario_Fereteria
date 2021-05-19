@@ -11,15 +11,34 @@ namespace Compras_Inventario_Fereteria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class productos
     {
         public int id_producto { get; set; }
+
+        [Required()]
+        [Display(Name = "Nombre del Producto")]
         public string nombre_producto { get; set; }
+
+        [Required()]
+        [Display(Name = "descripcion")]
         public string descripcion { get; set; }
+
+        [Required()]
+        [Display(Name = "Cantidad")]
         public int cantidad { get; set; }
+
+        [Required()]
+        [Display(Name = "Precio")]
         public double precio { get; set; }
+
+        [Required()]
+        [Display(Name = "Categoria")]
         public int id_categoria { get; set; }
+
+        [Required()]
+        [Display(Name = "Proveedor")]
         public int id_proveedor { get; set; }
     
         public virtual categoria categoria { get; set; }

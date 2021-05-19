@@ -5,10 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h1>Detalles del Producto</h1>
 
 <div>
-    <h4>productos</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -62,6 +61,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_producto }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-info " onclick="location.href='@Url.Action("Edit", new { id = Model.id_producto })';return false;">Editar</button>
+    <button class="btn btn-default " onclick="location.href='@Url.Action("Index", new { id = Model.id_producto })';return false;">Regresar</button>
 </p>
