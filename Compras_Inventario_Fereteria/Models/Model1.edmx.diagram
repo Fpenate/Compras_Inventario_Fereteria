@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="1d1d61327d0a4368a305f67665d7ce75" Name="Diagram1">
         <EntityTypeShape EntityType="InventarioBDModel.categoria" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventarioBDModel.compras" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="InventarioBDModel.empleado" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="InventarioBDModel.operacioes" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="InventarioBDModel.productos" Width="1.5" PointX="8" PointY="1.625" IsExpanded="true" />
@@ -16,12 +15,14 @@
         <EntityTypeShape EntityType="InventarioBDModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="InventarioBDModel.usuarios" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
         <AssociationConnector Association="InventarioBDModel.FK_productos_categoria" ManuallyRouted="false" />
-        <AssociationConnector Association="InventarioBDModel.FK_compras_empleado" ManuallyRouted="false" />
         <AssociationConnector Association="InventarioBDModel.FK_empleado_usuarios" ManuallyRouted="false" />
         <AssociationConnector Association="InventarioBDModel.FK_rol_operacion_operacioes" ManuallyRouted="false" />
         <AssociationConnector Association="InventarioBDModel.FK_productos_proveedor" ManuallyRouted="false" />
         <AssociationConnector Association="InventarioBDModel.FK_rol_operacion_roles" ManuallyRouted="false" />
         <AssociationConnector Association="InventarioBDModel.FK_usuarios_roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="InventarioBDModel.compras" Width="1.5" PointX="10.25" PointY="3.875" />
+        <AssociationConnector Association="InventarioBDModel.FK_compras_empleado" />
+        <AssociationConnector Association="InventarioBDModel.FK_compras_productos" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

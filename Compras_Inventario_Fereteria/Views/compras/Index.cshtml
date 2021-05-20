@@ -5,18 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Compras</h1>
+<h2>Index</h2>
 
 <p>
-    <button class="btn btn-success " onclick="location.href='@Url.Action("Create")';return false;">Crear Nueva Compra</button>
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.total_compra)
+            @Html.DisplayNameFor(model => model.cantidad)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cantidad)
+            @Html.DisplayNameFor(model => model.total_compra)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.fecha)
@@ -24,16 +24,19 @@
         <th>
             @Html.DisplayNameFor(model => model.empleado.nombre)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productos.nombre_producto)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.total_compra)
+            @Html.DisplayFor(modelItem => item.cantidad)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.cantidad)
+            @Html.DisplayFor(modelItem => item.total_compra)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.fecha)
@@ -42,13 +45,14 @@
             @Html.DisplayFor(modelItem => item.empleado.nombre)
         </td>
         <td>
-            <button class="btn btn-info" onclick="location.href='@Url.Action("Edit",new { id = item.id_compras })';return false;">Editar</button>
-            <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.id_compras })';return false;">Detalles</button>
-            <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.id_compras  })';return false;">Borrar</button>
+            @Html.DisplayFor(modelItem => item.productos.nombre_producto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_compras }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_compras }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_compras })
         </td>
     </tr>
 }
 
 </table>
-
-<button class="btn btn-default" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio</button>

@@ -5,26 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Borrar</h2>
+<h2>Delete</h2>
 
-<h3>Esta seguro que desea Borrar este Registro?</h3>
+<h3>Are you sure you want to delete this?</h3>
 <div>
+    <h4>compras</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.total_compra)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.total_compra)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.cantidad)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_compra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_compra)
         </dd>
 
         <dt>
@@ -43,15 +44,22 @@
             @Html.DisplayFor(model => model.empleado.nombre)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.productos.nombre_producto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productos.nombre_producto)
+        </dd>
+
     </dl>
 
-    @using (Html.BeginForm())
-    {
+    @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Borrar" class="btn btn-danger" /> |
-            <button class="btn btn-default " onclick="location.href='@Url.Action("index")';return false;">Regresar</button>
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>

@@ -26,7 +26,6 @@ namespace Compras_Inventario_Fereteria.Models
         }
     
         public virtual DbSet<categoria> categoria { get; set; }
-        public virtual DbSet<compras> compras { get; set; }
         public virtual DbSet<empleado> empleado { get; set; }
         public virtual DbSet<operacioes> operacioes { get; set; }
         public virtual DbSet<productos> productos { get; set; }
@@ -35,5 +34,6 @@ namespace Compras_Inventario_Fereteria.Models
         public virtual DbSet<roles> roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<usuarios> usuarios { get; set; }
+        public virtual DbSet<compras> compras { get; set; }
     }
 }

@@ -11,8 +11,7 @@ namespace Compras_Inventario_Fereteria.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class empleado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,33 +20,16 @@ namespace Compras_Inventario_Fereteria.Models
             this.compras = new HashSet<compras>();
         }
     
-
         public int id_empleado { get; set; }
-
         public int id_usuario { get; set; }
-        [Required()]
-        [Display(Name = "Nombre de Empleado")]
         public string nombre { get; set; }
-
-        [Required()]
-        [Display(Name = "Apellido")]
         public string apellido { get; set; }
-
-        [Required()]
-        [Display(Name = "Edad")]
         public int edad { get; set; }
-
-        [Required()]
-        [Display(Name = "Telefono")]
         public string telefono { get; set; }
-
-        [Required()]
-        [Display(Name = "Correo Electronico")]
-        [DataType(DataType.EmailAddress)]
         public string email { get; set; }
     
+        public virtual usuarios usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<compras> compras { get; set; }
-        public virtual usuarios usuarios { get; set; }
     }
 }
