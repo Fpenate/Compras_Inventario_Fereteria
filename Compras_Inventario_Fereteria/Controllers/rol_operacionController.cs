@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Compras_Inventario_Fereteria.Filters;
 using Compras_Inventario_Fereteria.Models;
 
 namespace Compras_Inventario_Fereteria.Controllers
@@ -23,7 +22,6 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: rol_operacion/Details/5
-        [AuthorizeUser(idOperacion: 3)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,7 +37,6 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: rol_operacion/Create
-        [AuthorizeUser(idOperacion: 3)]
         public ActionResult Create()
         {
             ViewBag.id_operacion = new SelectList(db.operacioes, "id_operaciones", "nombre");
@@ -58,7 +55,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.rol_operacion.Add(rol_operacion);
                 db.SaveChanges();
-                Request.Flash("success", "Rol Operacion Creado Correctamente");
+                Request.Flash("success", "Operacion Agregada correctamente");
                 return RedirectToAction("Index");
             }
 
@@ -68,7 +65,6 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: rol_operacion/Edit/5
-        [AuthorizeUser(idOperacion: 3)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -96,7 +92,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.Entry(rol_operacion).State = EntityState.Modified;
                 db.SaveChanges();
-                Request.Flash("success", "Rol Operacion Editado Correctamente");
+                Request.Flash("success", "Operacion Editada correctamente");
                 return RedirectToAction("Index");
             }
             ViewBag.id_operacion = new SelectList(db.operacioes, "id_operaciones", "nombre", rol_operacion.id_operacion);
@@ -105,7 +101,6 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: rol_operacion/Delete/5
-        [AuthorizeUser(idOperacion: 3)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -128,7 +123,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             rol_operacion rol_operacion = db.rol_operacion.Find(id);
             db.rol_operacion.Remove(rol_operacion);
             db.SaveChanges();
-            Request.Flash("success", "Rol Operacion Eliminado Correctamente");
+            Request.Flash("success", "Operacion Eliminada correctamente");
             return RedirectToAction("Index");
         }
 

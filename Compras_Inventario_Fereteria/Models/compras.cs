@@ -11,14 +11,30 @@ namespace Compras_Inventario_Fereteria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class compras
     {
         public int id_compras { get; set; }
+
+        [Required]
+        [Display(Name = "Nombre de Usuario")]
         public int id_usuario { get; set; }
+
+        [Required]
+        [Display(Name = "Producto")]
         public int id_producto { get; set; }
+
+        [Required]
+        [Display(Name = "Cantidad")]
         public int cantidad { get; set; }
+
+        [Required]
+        [Display(Name = "Total Compra")]
         public double total_compra { get; set; }
+
+        [Required]
+        [Display(Name = "Fecha")]
         public System.DateTime fecha { get; set; }
     
         public virtual productos productos { get; set; }

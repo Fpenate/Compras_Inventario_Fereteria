@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h1>Compras</h1>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button class="btn btn-success " onclick="location.href='@Url.Action("Create")';return false;">Crear Nuevo</button>
 </p>
 <table class="table">
     <tr>
@@ -54,11 +54,13 @@
         @Html.DisplayFor(modelItem => item.fecha)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.id_compras }) |
-        @Html.ActionLink("Details", "Details", new { id = item.id_compras }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.id_compras })
+        <button class="btn btn-info" onclick="location.href='@Url.Action("Edit",new { id = item.id_compras })';return false;">Editar</button>
+        <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.id_compras })';return false;">Detalles</button>
+        <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.id_compras })';return false;">Borrar</button>
     </td>
 </tr>
 }
 
 </table>
+
+<button class="btn btn-default" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio</button>

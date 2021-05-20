@@ -11,7 +11,8 @@ namespace Compras_Inventario_Fereteria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class empleado
     {
         public int id_empleado { get; set; }

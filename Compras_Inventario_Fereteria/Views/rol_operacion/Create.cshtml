@@ -1,22 +1,22 @@
 ﻿@model Compras_Inventario_Fereteria.Models.rol_operacion
 
 @{
-    ViewBag.Title = "Crear";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Crear</h2>
+<h2>Create</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Rol operacion</h4>
+        <h4>rol_operacion</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.id_rol, "Rol", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_rol, "id_rol", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("id_rol", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_rol, "", new { @class = "text-danger" })
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_operacion, "Operacion", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_operacion, "id_operacion", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("id_operacion", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_operacion, "", new { @class = "text-danger" })
@@ -33,12 +33,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Crear" class="btn btn-success" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    <button class="btn btn-default" onclick="location.href='@Url.Action("Index")';return false;">Regresar</button>
+    @Html.ActionLink("Back to List", "Index")
 </div>

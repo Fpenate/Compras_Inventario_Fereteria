@@ -11,7 +11,8 @@ namespace Compras_Inventario_Fereteria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class productos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,11 +22,29 @@ namespace Compras_Inventario_Fereteria.Models
         }
     
         public int id_producto { get; set; }
+
+        [Required]
+        [Display(Name = "Nombre del Producto")]
         public string nombre_producto { get; set; }
+
+        [Required]
+        [Display(Name = "Direccion")]
         public string descripcion { get; set; }
+
+        [Required]
+        [Display(Name = "Cantidad")]
         public int cantidad { get; set; }
+
+        [Required]
+        [Display(Name = "Precio")]
         public double precio { get; set; }
+
+        [Required]
+        [Display(Name = "Categoria")]
         public int id_categoria { get; set; }
+
+        [Required]
+        [Display(Name = "proveedor")]
         public int id_proveedor { get; set; }
     
         public virtual categoria categoria { get; set; }

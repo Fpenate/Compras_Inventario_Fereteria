@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Rol Operaciones</h2>
+<h1>Rol Operaciones</h1>
 
 <p>
     <button class="btn btn-success " onclick="location.href='@Url.Action("Create")';return false;">Crear Nuevo</button>
@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.operacioes)
+            @Html.DisplayNameFor(model => model.operacioes.nombre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.roles.nombre)
@@ -39,4 +39,4 @@
 
 </table>
 
-<button class="btn btn-default" onclick="location.href='@Url.Action("Index","usuarios")';return false;">Regresar</button>
+<button class="btn btn-default" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio</button>

@@ -11,7 +11,8 @@ namespace Compras_Inventario_Fereteria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class usuarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +23,22 @@ namespace Compras_Inventario_Fereteria.Models
         }
     
         public int id_usuario { get; set; }
+
+        [Required]
+        [Display(Name ="Nombre del Usuario")]
         public string nombre { get; set; }
+
+        [Required]
+        [Display(Name = "Correo Electronico")]
+        [DataType(DataType.EmailAddress)]
         public string email { get; set; }
+
+        [Required]
+        [Display(Name = "Conraseña")]
         public string pasword { get; set; }
+
+        [Required]
+        [Display(Name = "Rol")]
         public int id_rol { get; set; }
     
         public virtual roles roles { get; set; }

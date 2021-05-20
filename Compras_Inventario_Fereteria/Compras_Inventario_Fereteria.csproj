@@ -274,11 +274,6 @@
     <Content Include="Views\roles\Details.cshtml" />
     <Content Include="Views\roles\Edit.cshtml" />
     <Content Include="Views\roles\Index.cshtml" />
-    <Content Include="Views\rol_operacion\Create.cshtml" />
-    <Content Include="Views\rol_operacion\Delete.cshtml" />
-    <Content Include="Views\rol_operacion\Details.cshtml" />
-    <Content Include="Views\rol_operacion\Edit.cshtml" />
-    <Content Include="Views\rol_operacion\Index.cshtml" />
     <Content Include="Views\productos\Create.cshtml" />
     <Content Include="Views\productos\Delete.cshtml" />
     <Content Include="Views\productos\Details.cshtml" />
@@ -312,6 +307,11 @@
     <Content Include="Views\empleadoes\Details.cshtml" />
     <Content Include="Views\empleadoes\Edit.cshtml" />
     <Content Include="Views\empleadoes\Index.cshtml" />
+    <Content Include="Views\rol_operacion\Create.cshtml" />
+    <Content Include="Views\rol_operacion\Delete.cshtml" />
+    <Content Include="Views\rol_operacion\Details.cshtml" />
+    <Content Include="Views\rol_operacion\Edit.cshtml" />
+    <Content Include="Views\rol_operacion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

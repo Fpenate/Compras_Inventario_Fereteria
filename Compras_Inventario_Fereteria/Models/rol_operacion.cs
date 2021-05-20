@@ -11,11 +11,18 @@ namespace Compras_Inventario_Fereteria.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class rol_operacion
     {
         public int id_rol_operacion { get; set; }
+
+        [Required]
+        [Display(Name = "Rol")]
         public int id_rol { get; set; }
+
+        [Required]
+        [Display(Name = "Operacion")]
         public int id_operacion { get; set; }
     
         public virtual operacioes operacioes { get; set; }

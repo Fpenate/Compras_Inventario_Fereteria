@@ -29,11 +29,11 @@ namespace Compras_Inventario_Fereteria.Models
         public virtual DbSet<operacioes> operacioes { get; set; }
         public virtual DbSet<productos> productos { get; set; }
         public virtual DbSet<proveedor> proveedor { get; set; }
-        public virtual DbSet<rol_operacion> rol_operacion { get; set; }
         public virtual DbSet<roles> roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<usuarios> usuarios { get; set; }
         public virtual DbSet<compras> compras { get; set; }
         public virtual DbSet<empleado> empleado { get; set; }
+        public virtual DbSet<rol_operacion> rol_operacion { get; set; }
     }
 }

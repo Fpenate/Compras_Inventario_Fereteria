@@ -1,13 +1,14 @@
 ﻿@model Compras_Inventario_Fereteria.Models.rol_operacion
 
 @{
-    ViewBag.Title = "Detalles";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Detalles</h1>
+<h1>Detalles de Rol Operacion</h1>
 
 <div>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -29,6 +30,6 @@
     </dl>
 </div>
 <p>
-    <button class="btn btn-info" onclick="location.href='@Url.Action("Edit", new { id = Model.id_rol_operacion })';return false;">Editar</button> |
-    <button class="btn btn-default " onclick="location.href='@Url.Action("Index", new { id = Model.id_rol_operacion })';return false;">Regresar</button>
+    <button class="btn btn-info " onclick="location.href='@Url.Action("Edit", new { id = Model.id_rol_operacion })';return false;">Editar</button>
+    <button class="btn btn-default " onclick="location.href='@Url.Action("Index")';return false;">Regresar</button>
 </p>
