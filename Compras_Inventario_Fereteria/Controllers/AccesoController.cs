@@ -26,7 +26,8 @@ namespace Compras_Inventario_Fereteria.Controllers
                                  select d).FirstOrDefault();
                     if (oUser == null)
                     {
-                        ViewBag.Error = "Usuario o contraseña invalida";
+                        //ViewBag.Error = "Usuario o contraseña invalida";
+                        Request.Flash("danger", "Usuario o Contraseña Incorrectos");
                         return View();
                     }
 

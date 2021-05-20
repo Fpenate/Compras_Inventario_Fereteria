@@ -54,6 +54,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.categoria.Add(categoria);
                 db.SaveChanges();
+                Request.Flash("success", "Categoria Creada Correctamente");
                 return RedirectToAction("Index");
             }
 
@@ -87,6 +88,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.Entry(categoria).State = EntityState.Modified;
                 db.SaveChanges();
+                Request.Flash("success", "Categoria Editada Correctamente");
                 return RedirectToAction("Index");
             }
             return View(categoria);
@@ -116,6 +118,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             categoria categoria = db.categoria.Find(id);
             db.categoria.Remove(categoria);
             db.SaveChanges();
+            Request.Flash("success", "Categoria eliminada Correctamente");
             return RedirectToAction("Index");
         }
 

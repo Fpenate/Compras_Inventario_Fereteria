@@ -55,6 +55,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.roles.Add(roles);
                 db.SaveChanges();
+                Request.Flash("success", "Rol Creado Correctamente");
                 return RedirectToAction("Index");
             }
 
@@ -88,6 +89,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.Entry(roles).State = EntityState.Modified;
                 db.SaveChanges();
+                Request.Flash("success", "Rol Editado Correctamente");
                 return RedirectToAction("Index");
             }
             return View(roles);
@@ -117,6 +119,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             roles roles = db.roles.Find(id);
             db.roles.Remove(roles);
             db.SaveChanges();
+            Request.Flash("success", "Rol Eliminado Correctamente");
             return RedirectToAction("Index");
         }
 

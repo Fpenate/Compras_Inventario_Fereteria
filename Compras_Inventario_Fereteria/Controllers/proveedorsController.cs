@@ -54,6 +54,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.proveedor.Add(proveedor);
                 db.SaveChanges();
+                Request.Flash("success", "proveedor Creado Correctamente");
                 return RedirectToAction("Index");
             }
 
@@ -87,6 +88,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.Entry(proveedor).State = EntityState.Modified;
                 db.SaveChanges();
+                Request.Flash("success", "Proveedor Editado Correctamente");
                 return RedirectToAction("Index");
             }
             return View(proveedor);
@@ -116,6 +118,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             proveedor proveedor = db.proveedor.Find(id);
             db.proveedor.Remove(proveedor);
             db.SaveChanges();
+            Request.Flash("success", "Proveedor Eliminado Correctamente");
             return RedirectToAction("Index");
         }
 

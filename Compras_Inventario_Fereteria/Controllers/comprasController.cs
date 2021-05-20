@@ -56,6 +56,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.compras.Add(compras);
                 db.SaveChanges();
+                Request.Flash("success", "Compra Guardada Correctamente");
                 return RedirectToAction("Index");
             }
 
@@ -91,6 +92,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.Entry(compras).State = EntityState.Modified;
                 db.SaveChanges();
+                Request.Flash("success", "Compra Editada Correctamente");
                 return RedirectToAction("Index");
             }
             ViewBag.id_empleado = new SelectList(db.empleado, "id_empleado", "nombre", compras.id_empleado);
@@ -121,6 +123,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             compras compras = db.compras.Find(id);
             db.compras.Remove(compras);
             db.SaveChanges();
+            Request.Flash("success", "Compra Eliminada Correctamente");
             return RedirectToAction("Index");
         }
 

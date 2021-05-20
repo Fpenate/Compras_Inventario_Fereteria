@@ -1,0 +1,9 @@
+﻿@foreach (var flash in Request.GetFlashMessages())
+{
+<div class="alert alert-@flash.Type" alert-dismissible fade in>
+    <strong>@flash.Message</strong>
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+</div>
+
+}

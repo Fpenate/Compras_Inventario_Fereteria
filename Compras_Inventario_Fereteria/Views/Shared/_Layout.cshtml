@@ -78,10 +78,11 @@
         <span class="openbtn" onclick="openNav()">☰ Menu</span>
     </div>
     <div class="container body-content">
+        @Html.Partial("~/Views/Shared/_Flash.cshtml")
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year -Compras de  Inventario de fereteria UML proyect UTEC </p>
         </footer>
     </div>
 

@@ -58,6 +58,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.rol_operacion.Add(rol_operacion);
                 db.SaveChanges();
+                Request.Flash("success", "Rol Operacion Creado Correctamente");
                 return RedirectToAction("Index");
             }
 
@@ -95,6 +96,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.Entry(rol_operacion).State = EntityState.Modified;
                 db.SaveChanges();
+                Request.Flash("success", "Rol Operacion Editado Correctamente");
                 return RedirectToAction("Index");
             }
             ViewBag.id_operacion = new SelectList(db.operacioes, "id_operaciones", "nombre", rol_operacion.id_operacion);
@@ -126,6 +128,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             rol_operacion rol_operacion = db.rol_operacion.Find(id);
             db.rol_operacion.Remove(rol_operacion);
             db.SaveChanges();
+            Request.Flash("success", "Rol Operacion Eliminado Correctamente");
             return RedirectToAction("Index");
         }
 

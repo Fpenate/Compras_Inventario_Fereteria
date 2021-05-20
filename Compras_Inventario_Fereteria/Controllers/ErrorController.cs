@@ -15,6 +15,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             ViewBag.operacion = operacion;
             ViewBag.modulo = modulo;
             ViewBag.msjeErrorExcepcion = msjeErrorExcepcion;
+            Request.Flash("info", "No tienes permiso para hacer esta operacion");
             return View();
         }
     }

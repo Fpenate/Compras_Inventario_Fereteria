@@ -57,6 +57,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.usuarios.Add(usuarios);
                 db.SaveChanges();
+                Request.Flash("success", "Usuario agregado correctamente");
                 return RedirectToAction("Index");
             }
 
@@ -92,6 +93,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.Entry(usuarios).State = EntityState.Modified;
                 db.SaveChanges();
+                Request.Flash("success", "Usuario Modificado correctamente");
                 return RedirectToAction("Index");
             }
             ViewBag.id_rol = new SelectList(db.roles, "id_rol", "nombre", usuarios.id_rol);
@@ -122,6 +124,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             usuarios usuarios = db.usuarios.Find(id);
             db.usuarios.Remove(usuarios);
             db.SaveChanges();
+            Request.Flash("success", "Usuario Eliminado correctamente");
             return RedirectToAction("Index");
         }
 

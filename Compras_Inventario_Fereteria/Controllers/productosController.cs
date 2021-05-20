@@ -57,6 +57,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.productos.Add(productos);
                 db.SaveChanges();
+                Request.Flash("success", "Producto Agregado Correctamente");
                 return RedirectToAction("Index");
             }
 
@@ -94,6 +95,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.Entry(productos).State = EntityState.Modified;
                 db.SaveChanges();
+                Request.Flash("success", "Producto Editado Correctamente");
                 return RedirectToAction("Index");
             }
             ViewBag.id_categoria = new SelectList(db.categoria, "id_categoria", "tipo_categoria", productos.id_categoria);
@@ -125,6 +127,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             productos productos = db.productos.Find(id);
             db.productos.Remove(productos);
             db.SaveChanges();
+            Request.Flash("success", "Producto Eliminado Correctamente");
             return RedirectToAction("Index");
         }
 
