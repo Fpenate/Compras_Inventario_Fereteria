@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Empleados</h1>
+<h2>Index</h2>
 
 <p>
-    <button class="btn btn-success " onclick="location.href='@Url.Action("Create")';return false;">Crear Nuevo</button>
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -28,7 +28,7 @@
             @Html.DisplayNameFor(model => model.email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.usuarios.id_rol)
+            @Html.DisplayNameFor(model => model.usuarios.nombre)
         </th>
         <th></th>
     </tr>
@@ -54,12 +54,11 @@
             @Html.DisplayFor(modelItem => item.usuarios.nombre)
         </td>
         <td>
-            <button class="btn btn-info" onclick="location.href='@Url.Action("Edit",new { id = item.id_empleado })';return false;">Editar</button>
-            <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.id_empleado })';return false;">Detalles</button>
-            <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.id_empleado  })';return false;">Borrar</button>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_empleado }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_empleado }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_empleado })
         </td>
     </tr>
 }
 
 </table>
-<button class="btn btn-default" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio</button>

@@ -17,7 +17,7 @@
             <PropertyRef Name="id_compras" />
           </Key>
           <Property Name="id_compras" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_empleado" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
           <Property Name="id_producto" Type="int" Nullable="false" />
           <Property Name="cantidad" Type="int" Nullable="false" />
           <Property Name="total_compra" Type="float" Nullable="false" />
@@ -99,18 +99,6 @@
           <Property Name="pasword" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="id_rol" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_compras_empleado">
-          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
-          <End Role="compras" Type="Self.compras" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="empleado">
-              <PropertyRef Name="id_empleado" />
-            </Principal>
-            <Dependent Role="compras">
-              <PropertyRef Name="id_empleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_compras_productos">
           <End Role="productos" Type="Self.productos" Multiplicity="1" />
           <End Role="compras" Type="Self.compras" Multiplicity="*" />
@@ -120,6 +108,18 @@
             </Principal>
             <Dependent Role="compras">
               <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compras_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="compras" Type="Self.compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="compras">
+              <PropertyRef Name="id_usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -206,12 +206,12 @@
           <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_compras_empleado" Association="Self.FK_compras_empleado">
-            <End Role="empleado" EntitySet="empleado" />
-            <End Role="compras" EntitySet="compras" />
-          </AssociationSet>
           <AssociationSet Name="FK_compras_productos" Association="Self.FK_compras_productos">
             <End Role="productos" EntitySet="productos" />
+            <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compras_usuarios" Association="Self.FK_compras_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
             <End Role="compras" EntitySet="compras" />
           </AssociationSet>
           <AssociationSet Name="FK_empleado_usuarios" Association="Self.FK_empleado_usuarios">
@@ -250,20 +250,6 @@
           <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tipo_categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="productos" Relationship="Self.FK_productos_categoria" FromRole="categoria" ToRole="productos" />
-        </EntityType>
-        <EntityType Name="empleado">
-          <Key>
-            <PropertyRef Name="id_empleado" />
-          </Key>
-          <Property Name="id_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_usuario" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="edad" Type="Int32" Nullable="false" />
-          <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="usuarios" Relationship="Self.FK_empleado_usuarios" FromRole="empleado" ToRole="usuarios" />
-          <NavigationProperty Name="compras" Relationship="InventarioBDModel.FK_compras_empleado" FromRole="empleado" ToRole="compras" />
         </EntityType>
         <EntityType Name="operacioes">
           <Key>
@@ -337,8 +323,9 @@
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pasword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="id_rol" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="empleado" Relationship="Self.FK_empleado_usuarios" FromRole="usuarios" ToRole="empleado" />
           <NavigationProperty Name="roles" Relationship="Self.FK_usuarios_roles" FromRole="usuarios" ToRole="roles" />
+          <NavigationProperty Name="compras" Relationship="InventarioBDModel.FK_compras_usuarios" FromRole="usuarios" ToRole="compras" />
+          <NavigationProperty Name="empleado" Relationship="InventarioBDModel.FK_empleado_usuarios" FromRole="usuarios" ToRole="empleado" />
         </EntityType>
         <Association Name="FK_productos_categoria">
           <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
@@ -349,18 +336,6 @@
             </Principal>
             <Dependent Role="productos">
               <PropertyRef Name="id_categoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_empleado_usuarios">
-          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
-          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="usuarios">
-              <PropertyRef Name="id_usuario" />
-            </Principal>
-            <Dependent Role="empleado">
-              <PropertyRef Name="id_usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -414,7 +389,6 @@
         </Association>
         <EntityContainer Name="InventarioBDEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="categoria" EntityType="Self.categoria" />
-          <EntitySet Name="empleado" EntityType="Self.empleado" />
           <EntitySet Name="operacioes" EntityType="Self.operacioes" />
           <EntitySet Name="productos" EntityType="Self.productos" />
           <EntitySet Name="proveedor" EntityType="Self.proveedor" />
@@ -425,10 +399,6 @@
           <AssociationSet Name="FK_productos_categoria" Association="Self.FK_productos_categoria">
             <End Role="categoria" EntitySet="categoria" />
             <End Role="productos" EntitySet="productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_empleado_usuarios" Association="Self.FK_empleado_usuarios">
-            <End Role="usuarios" EntitySet="usuarios" />
-            <End Role="empleado" EntitySet="empleado" />
           </AssociationSet>
           <AssociationSet Name="FK_rol_operacion_operacioes" Association="Self.FK_rol_operacion_operacioes">
             <End Role="operacioes" EntitySet="operacioes" />
@@ -447,40 +417,46 @@
             <End Role="usuarios" EntitySet="usuarios" />
           </AssociationSet>
           <EntitySet Name="compras" EntityType="InventarioBDModel.compras" />
-          <AssociationSet Name="FK_compras_empleado" Association="InventarioBDModel.FK_compras_empleado">
-            <End Role="empleado" EntitySet="empleado" />
-            <End Role="compras" EntitySet="compras" />
-          </AssociationSet>
+          <EntitySet Name="empleado" EntityType="InventarioBDModel.empleado" />
           <AssociationSet Name="FK_compras_productos" Association="InventarioBDModel.FK_compras_productos">
             <End Role="productos" EntitySet="productos" />
             <End Role="compras" EntitySet="compras" />
           </AssociationSet>
-        </EntityContainer>
+          <AssociationSet Name="FK_compras_usuarios" Association="InventarioBDModel.FK_compras_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_empleado_usuarios" Association="InventarioBDModel.FK_empleado_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="compras">
           <Key>
             <PropertyRef Name="id_compras" />
           </Key>
           <Property Name="id_compras" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_empleado" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
           <Property Name="id_producto" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" Nullable="false" />
           <Property Name="total_compra" Type="Double" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="empleado" Relationship="InventarioBDModel.FK_compras_empleado" FromRole="compras" ToRole="empleado" />
           <NavigationProperty Name="productos" Relationship="InventarioBDModel.FK_compras_productos" FromRole="compras" ToRole="productos" />
+          <NavigationProperty Name="usuarios" Relationship="InventarioBDModel.FK_compras_usuarios" FromRole="compras" ToRole="usuarios" />
         </EntityType>
-        <Association Name="FK_compras_empleado">
-          <End Type="InventarioBDModel.empleado" Role="empleado" Multiplicity="1" />
-          <End Type="InventarioBDModel.compras" Role="compras" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="empleado">
-              <PropertyRef Name="id_empleado" />
-            </Principal>
-            <Dependent Role="compras">
-              <PropertyRef Name="id_empleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="empleado">
+          <Key>
+            <PropertyRef Name="id_empleado" />
+          </Key>
+          <Property Name="id_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="edad" Type="Int32" Nullable="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="usuarios" Relationship="InventarioBDModel.FK_empleado_usuarios" FromRole="empleado" ToRole="usuarios" />
+        </EntityType>
         <Association Name="FK_compras_productos">
           <End Type="InventarioBDModel.productos" Role="productos" Multiplicity="1" />
           <End Type="InventarioBDModel.compras" Role="compras" Multiplicity="*" />
@@ -493,7 +469,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_compras_usuarios">
+          <End Type="InventarioBDModel.usuarios" Role="usuarios" Multiplicity="1" />
+          <End Type="InventarioBDModel.compras" Role="compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="compras">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_empleado_usuarios">
+          <End Type="InventarioBDModel.usuarios" Role="usuarios" Multiplicity="1" />
+          <End Type="InventarioBDModel.empleado" Role="empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -504,19 +504,6 @@
               <MappingFragment StoreEntitySet="categoria">
                 <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
                 <ScalarProperty Name="tipo_categoria" ColumnName="tipo_categoria" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="empleado">
-            <EntityTypeMapping TypeName="InventarioBDModel.empleado">
-              <MappingFragment StoreEntitySet="empleado">
-                <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
-                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="edad" ColumnName="edad" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -598,8 +585,21 @@
                 <ScalarProperty Name="total_compra" ColumnName="total_compra" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
                 <ScalarProperty Name="id_producto" ColumnName="id_producto" />
-                <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="id_compras" ColumnName="id_compras" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="empleado">
+            <EntityTypeMapping TypeName="InventarioBDModel.empleado">
+              <MappingFragment StoreEntitySet="empleado">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

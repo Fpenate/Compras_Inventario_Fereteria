@@ -1,13 +1,15 @@
 ﻿@model Compras_Inventario_Fereteria.Models.empleado
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Detalles del Empleado</h1>
+<h2>Delete</h2>
 
+<h3>Are you sure you want to delete this?</h3>
 <div>
+    <h4>empleado</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -59,8 +61,13 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
 </div>
-<p>
-    <button class="btn btn-info " onclick="location.href='@Url.Action("Edit", new { id = Model.id_empleado })';return false;">Editar</button>
-    <button class="btn btn-default " onclick="location.href='@Url.Action("Index", new { id = Model.id_empleado })';return false;">Regresar</button>
-</p>

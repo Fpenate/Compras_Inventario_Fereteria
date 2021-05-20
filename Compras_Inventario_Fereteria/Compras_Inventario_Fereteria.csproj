@@ -135,7 +135,7 @@
     <Compile Include="Controllers\categoriasController.cs" />
     <Compile Include="Controllers\CerrarController.cs" />
     <Compile Include="Controllers\comprasController.cs" />
-    <Compile Include="Controllers\empleadosController.cs" />
+    <Compile Include="Controllers\empleadoesController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\productosController.cs" />
@@ -294,16 +294,6 @@
     <Content Include="Views\proveedor\Details.cshtml" />
     <Content Include="Views\proveedor\Edit.cshtml" />
     <Content Include="Views\proveedor\Index.cshtml" />
-    <Content Include="Views\empleados\Create.cshtml" />
-    <Content Include="Views\empleados\Delete.cshtml" />
-    <Content Include="Views\empleados\Details.cshtml" />
-    <Content Include="Views\empleados\Edit.cshtml" />
-    <Content Include="Views\empleados\Index.cshtml" />
-    <Content Include="Views\compras\Create.cshtml" />
-    <Content Include="Views\compras\Delete.cshtml" />
-    <Content Include="Views\compras\Details.cshtml" />
-    <Content Include="Views\compras\Edit.cshtml" />
-    <Content Include="Views\compras\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\proveedors\Create.cshtml" />
@@ -312,6 +302,16 @@
     <Content Include="Views\proveedors\Edit.cshtml" />
     <Content Include="Views\proveedors\Index.cshtml" />
     <Content Include="Views\Shared\_Flash.cshtml" />
+    <Content Include="Views\compras\Create.cshtml" />
+    <Content Include="Views\compras\Delete.cshtml" />
+    <Content Include="Views\compras\Details.cshtml" />
+    <Content Include="Views\compras\Edit.cshtml" />
+    <Content Include="Views\compras\Index.cshtml" />
+    <Content Include="Views\empleadoes\Create.cshtml" />
+    <Content Include="Views\empleadoes\Delete.cshtml" />
+    <Content Include="Views\empleadoes\Details.cshtml" />
+    <Content Include="Views\empleadoes\Edit.cshtml" />
+    <Content Include="Views\empleadoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

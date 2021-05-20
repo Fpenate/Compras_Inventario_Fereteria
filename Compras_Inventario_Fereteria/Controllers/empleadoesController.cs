@@ -6,23 +6,22 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Compras_Inventario_Fereteria.Filters;
 using Compras_Inventario_Fereteria.Models;
 
 namespace Compras_Inventario_Fereteria.Controllers
 {
-    public class empleadosController : Controller
+    public class empleadoesController : Controller
     {
         private InventarioBDEntities1 db = new InventarioBDEntities1();
 
-        // GET: empleados
+        // GET: empleadoes
         public ActionResult Index()
         {
             var empleado = db.empleado.Include(e => e.usuarios);
             return View(empleado.ToList());
         }
 
-        // GET: empleados/Details/5
+        // GET: empleadoes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,15 +36,14 @@ namespace Compras_Inventario_Fereteria.Controllers
             return View(empleado);
         }
 
-        // GET: empleados/Create
-        [AuthorizeUser(idOperacion: 3)]
+        // GET: empleadoes/Create
         public ActionResult Create()
         {
             ViewBag.id_usuario = new SelectList(db.usuarios, "id_usuario", "nombre");
             return View();
         }
 
-        // POST: empleados/Create
+        // POST: empleadoes/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -56,7 +54,6 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.empleado.Add(empleado);
                 db.SaveChanges();
-                Request.Flash("success", "Empleado Agregado Correctamente");
                 return RedirectToAction("Index");
             }
 
@@ -64,8 +61,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             return View(empleado);
         }
 
-        // GET: empleados/Edit/5
-        [AuthorizeUser(idOperacion: 3)]
+        // GET: empleadoes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,7 +77,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             return View(empleado);
         }
 
-        // POST: empleados/Edit/5
+        // POST: empleadoes/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -92,15 +88,13 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 db.Entry(empleado).State = EntityState.Modified;
                 db.SaveChanges();
-                Request.Flash("success", "Empleado Editado Correctamente");
                 return RedirectToAction("Index");
             }
             ViewBag.id_usuario = new SelectList(db.usuarios, "id_usuario", "nombre", empleado.id_usuario);
             return View(empleado);
         }
 
-        // GET: empleados/Delete/5
-        [AuthorizeUser(idOperacion: 3)]
+        // GET: empleadoes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -115,7 +109,7 @@ namespace Compras_Inventario_Fereteria.Controllers
             return View(empleado);
         }
 
-        // POST: empleados/Delete/5
+        // POST: empleadoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -123,7 +117,6 @@ namespace Compras_Inventario_Fereteria.Controllers
             empleado empleado = db.empleado.Find(id);
             db.empleado.Remove(empleado);
             db.SaveChanges();
-            Request.Flash("success", "Empleado Eliminado Correctamente");
             return RedirectToAction("Index");
         }
 

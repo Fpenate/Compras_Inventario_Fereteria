@@ -15,13 +15,13 @@ namespace Compras_Inventario_Fereteria.Models
     public partial class compras
     {
         public int id_compras { get; set; }
-        public int id_empleado { get; set; }
+        public int id_usuario { get; set; }
         public int id_producto { get; set; }
         public int cantidad { get; set; }
         public double total_compra { get; set; }
         public System.DateTime fecha { get; set; }
     
-        public virtual empleado empleado { get; set; }
         public virtual productos productos { get; set; }
+        public virtual usuarios usuarios { get; set; }
     }
 }
