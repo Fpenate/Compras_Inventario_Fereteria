@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Compras_Inventario_Fereteria.Models.operacioes>
+
+@{
+    ViewBag.Title = "Operaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Operaciones</h1>
+
+<p>
+    <button class="btn btn-success " onclick="location.href='@Url.Action("Create")';return false;">Crear Nuevo</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            <button class="btn btn-info" onclick="location.href='@Url.Action("Edit",new { id = item.id_operaciones })';return false;">Editar</button>
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.id_operaciones })';return false;">Detalles</button>
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.id_operaciones })';return false;">Borrar</button>
+        </td>
+    </tr>
+}
+
+</table>

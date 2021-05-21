@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Compras_Inventario_Fereteria.Filters;
 using Compras_Inventario_Fereteria.Models;
 
 namespace Compras_Inventario_Fereteria.Controllers
@@ -15,6 +16,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         private InventarioBDEntities1 db = new InventarioBDEntities1();
 
         // GET: rol_operacion
+        [AuthorizeUser(idOperacion: 1)]
         public ActionResult Index()
         {
             var rol_operacion = db.rol_operacion.Include(r => r.operacioes).Include(r => r.roles);
@@ -22,6 +24,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: rol_operacion/Details/5
+        [AuthorizeUser(idOperacion: 1)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +40,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: rol_operacion/Create
+        [AuthorizeUser(idOperacion: 3)]
         public ActionResult Create()
         {
             ViewBag.id_operacion = new SelectList(db.operacioes, "id_operaciones", "nombre");
@@ -65,6 +69,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: rol_operacion/Edit/5
+        [AuthorizeUser(idOperacion: 2)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -101,6 +106,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: rol_operacion/Delete/5
+        [AuthorizeUser(idOperacion: 4)]
         public ActionResult Delete(int? id)
         {
             if (id == null)

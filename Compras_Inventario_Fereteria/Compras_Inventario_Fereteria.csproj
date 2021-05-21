@@ -138,6 +138,7 @@
     <Compile Include="Controllers\empleadoesController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\operacioesController.cs" />
     <Compile Include="Controllers\productosController.cs" />
     <Compile Include="Controllers\proveedorsController.cs" />
     <Compile Include="Controllers\rolesController.cs" />
@@ -312,6 +313,11 @@
     <Content Include="Views\rol_operacion\Details.cshtml" />
     <Content Include="Views\rol_operacion\Edit.cshtml" />
     <Content Include="Views\rol_operacion\Index.cshtml" />
+    <Content Include="Views\operacioes\Create.cshtml" />
+    <Content Include="Views\operacioes\Delete.cshtml" />
+    <Content Include="Views\operacioes\Details.cshtml" />
+    <Content Include="Views\operacioes\Edit.cshtml" />
+    <Content Include="Views\operacioes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

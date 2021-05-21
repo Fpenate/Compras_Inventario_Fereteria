@@ -11,19 +11,18 @@ using Compras_Inventario_Fereteria.Models;
 
 namespace Compras_Inventario_Fereteria.Controllers
 {
-    public class usuariosController : Controller
+    public class operacioesController : Controller
     {
         private InventarioBDEntities1 db = new InventarioBDEntities1();
 
-        // GET: usuarios
+        // GET: operacioes
         [AuthorizeUser(idOperacion: 4)]
         public ActionResult Index()
         {
-            var usuarios = db.usuarios.Include(u => u.roles);
-            return View(usuarios.ToList());
+            return View(db.operacioes.ToList());
         }
 
-        // GET: usuarios/Details/5
+        // GET: operacioes/Details/5
         [AuthorizeUser(idOperacion: 4)]
         public ActionResult Details(int? id)
         {
@@ -31,42 +30,40 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            usuarios usuarios = db.usuarios.Find(id);
-            if (usuarios == null)
+            operacioes operacioes = db.operacioes.Find(id);
+            if (operacioes == null)
             {
                 return HttpNotFound();
             }
-            return View(usuarios);
+            return View(operacioes);
         }
 
-        // GET: usuarios/Create
+        // GET: operacioes/Create
         [AuthorizeUser(idOperacion: 4)]
         public ActionResult Create()
         {
-            ViewBag.id_rol = new SelectList(db.roles, "id_rol", "nombre");
             return View();
         }
 
-        // POST: usuarios/Create
+        // POST: operacioes/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_usuario,nombre,email,pasword,id_rol")] usuarios usuarios)
+        public ActionResult Create([Bind(Include = "id_operaciones,nombre")] operacioes operacioes)
         {
             if (ModelState.IsValid)
             {
-                db.usuarios.Add(usuarios);
+                db.operacioes.Add(operacioes);
                 db.SaveChanges();
-                Request.Flash("success", "Usuario agregado correctamente");
+                Request.Flash("success", "Operacion agregada correctamente");
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id_rol = new SelectList(db.roles, "id_rol", "nombre", usuarios.id_rol);
-            return View(usuarios);
+            return View(operacioes);
         }
 
-        // GET: usuarios/Edit/5
+        // GET: operacioes/Edit/5
         [AuthorizeUser(idOperacion: 4)]
         public ActionResult Edit(int? id)
         {
@@ -74,34 +71,32 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            usuarios usuarios = db.usuarios.Find(id);
-            if (usuarios == null)
+            operacioes operacioes = db.operacioes.Find(id);
+            if (operacioes == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.id_rol = new SelectList(db.roles, "id_rol", "nombre", usuarios.id_rol);
-            return View(usuarios);
+            return View(operacioes);
         }
 
-        // POST: usuarios/Edit/5
+        // POST: operacioes/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_usuario,nombre,email,pasword,id_rol")] usuarios usuarios)
+        public ActionResult Edit([Bind(Include = "id_operaciones,nombre")] operacioes operacioes)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuarios).State = EntityState.Modified;
+                db.Entry(operacioes).State = EntityState.Modified;
                 db.SaveChanges();
-                Request.Flash("success", "Usuario Modificado correctamente");
+                Request.Flash("success", "Operacion Editada correctamente");
                 return RedirectToAction("Index");
             }
-            ViewBag.id_rol = new SelectList(db.roles, "id_rol", "nombre", usuarios.id_rol);
-            return View(usuarios);
+            return View(operacioes);
         }
 
-        // GET: usuarios/Delete/5
+        // GET: operacioes/Delete/5
         [AuthorizeUser(idOperacion: 4)]
         public ActionResult Delete(int? id)
         {
@@ -109,23 +104,23 @@ namespace Compras_Inventario_Fereteria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            usuarios usuarios = db.usuarios.Find(id);
-            if (usuarios == null)
+            operacioes operacioes = db.operacioes.Find(id);
+            if (operacioes == null)
             {
                 return HttpNotFound();
             }
-            return View(usuarios);
+            return View(operacioes);
         }
 
-        // POST: usuarios/Delete/5
+        // POST: operacioes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            usuarios usuarios = db.usuarios.Find(id);
-            db.usuarios.Remove(usuarios);
+            operacioes operacioes = db.operacioes.Find(id);
+            db.operacioes.Remove(operacioes);
             db.SaveChanges();
-            Request.Flash("success", "Usuario Eliminado correctamente");
+            Request.Flash("success", "Operacion Eliminada correctamente");
             return RedirectToAction("Index");
         }
 

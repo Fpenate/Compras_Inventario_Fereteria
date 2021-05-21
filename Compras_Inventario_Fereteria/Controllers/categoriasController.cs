@@ -16,12 +16,15 @@ namespace Compras_Inventario_Fereteria.Controllers
         private InventarioBDEntities1 db = new InventarioBDEntities1();
 
         // GET: categorias
+
+        [AuthorizeUser(idOperacion: 1)]
         public ActionResult Index()
         {
             return View(db.categoria.ToList());
         }
 
         // GET: categorias/Details/5
+        [AuthorizeUser(idOperacion: 1)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -62,7 +65,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: categorias/Edit/5
-        [AuthorizeUser(idOperacion: 3)]
+        [AuthorizeUser(idOperacion: 2)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -95,7 +98,7 @@ namespace Compras_Inventario_Fereteria.Controllers
         }
 
         // GET: categorias/Delete/5
-        [AuthorizeUser(idOperacion: 3)]
+        [AuthorizeUser(idOperacion: 4)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
