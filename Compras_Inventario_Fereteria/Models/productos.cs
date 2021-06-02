@@ -28,7 +28,8 @@ namespace Compras_Inventario_Fereteria.Models
         public string nombre_producto { get; set; }
 
         [Required]
-        [Display(Name = "Direccion")]
+        [StringLength(50)]
+        [Display(Name = "Descripcion")]
         public string descripcion { get; set; }
 
         [Required]

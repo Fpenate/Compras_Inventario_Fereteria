@@ -1,17 +1,32 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<style type="text/css">
 
-<div class="jumbotron">
-    <h1>COMPRAS DE INVENTARIO DE FERRETERIA</h1>
-</div>
+    body {
+        background-image: url("/Content/images/muchas-herramientas.jpg");
+        background-repeat: no-repeat, repeat;
+        background-position: center; /* Center the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+        padding-top: 50px;
+    }
 
-<div class="container">
+    .jumbotron {
+        background-image: url("");
+        background-repeat: no-repeat, repeat;
+        background-position: center; /* Center the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+        padding-top: 50px;
+        font-weight: bold;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        padding: 100px;
+        border-radius: 50px;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    }
+</style>
 
-    <div class="jumbotron ">
-        <img src="~/Content/images/ferreteria.jpg" width="1000" height="500"  />
-    </div>
-    
-
+<div class="jumbotron jumbotron-fluid">
+    <h1>COMPRAS DE INVENTARIO DE FERRETERIA <i class="fas fa-tools"></i></h1>
 </div>
 

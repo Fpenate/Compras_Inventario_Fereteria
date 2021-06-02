@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Compras_Inventario_Fereteria.Models.compras>
+@{
+    ViewBag.Title = "Reporte";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Reporte de Compras  </h1>
+        <p>Compras de Inventario de Ferreteria</p>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h4>Reporte de Compras a la fecha del Departamento de Compras</h4></div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.productos.nombre_producto)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuarios.nombre)
+
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total_compra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productos.nombre_producto)
+
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.usuarios.nombre)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_compra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha)
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4><u>Reporte de Poductos a la fecha : <b>@DateTime.Now </b></u></h4>
+
+    </div>
+</div>

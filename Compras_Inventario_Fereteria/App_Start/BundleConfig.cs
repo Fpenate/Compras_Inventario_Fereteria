@@ -25,6 +25,11 @@ namespace Compras_Inventario_Fereteria
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/bundles/datatablesjs").Include(
+                 "~/Scripts/datatables.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datatablescss").Include(
+                        "~/Content/datatables.css"));
         }
     }
 }

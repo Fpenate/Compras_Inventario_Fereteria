@@ -55,6 +55,9 @@
       <HintPath>..\packages\Flash.Mvc5.1.0.0\lib\net46\Flash.Mvc5.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -141,6 +144,7 @@
     <Compile Include="Controllers\operacioesController.cs" />
     <Compile Include="Controllers\productosController.cs" />
     <Compile Include="Controllers\proveedorsController.cs" />
+    <Compile Include="Controllers\reportesController.cs" />
     <Compile Include="Controllers\rolesController.cs" />
     <Compile Include="Controllers\rol_operacionController.cs" />
     <Compile Include="Controllers\usuariosController.cs" />
@@ -203,6 +207,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\error.jpg" />
     <Content Include="Content\images\ferreteria.jpg" />
+    <Content Include="Content\images\index-login-1024x717.png" />
+    <Content Include="Content\images\muchas-herramientas.jpg" />
     <Content Include="Content\images\ui-icons_444444_256x240.png" />
     <Content Include="Content\images\ui-icons_555555_256x240.png" />
     <Content Include="Content\images\ui-icons_777620_256x240.png" />
@@ -225,6 +231,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Model1.edmx">
@@ -234,6 +244,7 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DatePickerReady.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -285,11 +296,6 @@
     <Content Include="Views\categorias\Details.cshtml" />
     <Content Include="Views\categorias\Edit.cshtml" />
     <Content Include="Views\categorias\Index.cshtml" />
-    <Content Include="Views\proveedor\Create.cshtml" />
-    <Content Include="Views\proveedor\Delete.cshtml" />
-    <Content Include="Views\proveedor\Details.cshtml" />
-    <Content Include="Views\proveedor\Edit.cshtml" />
-    <Content Include="Views\proveedor\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\proveedors\Create.cshtml" />
@@ -318,6 +324,10 @@
     <Content Include="Views\operacioes\Details.cshtml" />
     <Content Include="Views\operacioes\Edit.cshtml" />
     <Content Include="Views\operacioes\Index.cshtml" />
+    <Content Include="Views\reportes\Index.cshtml" />
+    <Content Include="Views\reportes\Reporte.cshtml" />
+    <Content Include="Views\productos\Reporte.cshtml" />
+    <Content Include="Views\compras\Reporte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

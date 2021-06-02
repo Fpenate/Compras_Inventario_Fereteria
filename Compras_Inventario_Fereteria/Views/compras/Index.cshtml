@@ -5,10 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Compras</h1>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Compras de Inventario <i class="fas fa-cart-arrow-down"></i></h1>
+    </div>
+</div>
 
 <p>
-    <button class="btn btn-success " onclick="location.href='@Url.Action("Create")';return false;">Crear Nuevo</button>
+    <button class="btn btn-success btn-lg" onclick="location.href='@Url.Action("Create")';return false;">Crear Nuevo <i class="fas fa-plus-square size:300x"></i></button>
 </p>
 <table class="table">
     <tr>
@@ -33,34 +37,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.productos.nombre_producto)
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productos.nombre_producto)
 
-    </td>
-    <td>
+            </td>
+            <td>
 
-        @Html.DisplayFor(modelItem => item.usuarios.nombre)
-    </td>
+                @Html.DisplayFor(modelItem => item.usuarios.nombre)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.cantidad)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.total_compra)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.fecha)
-    </td>
-    <td>
-        <button class="btn btn-info" onclick="location.href='@Url.Action("Edit",new { id = item.id_compras })';return false;">Editar</button>
-        <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.id_compras })';return false;">Detalles</button>
-        <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.id_compras })';return false;">Borrar</button>
-    </td>
-</tr>
-}
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_compra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha)
+            </td>
+            <td>
+                <button class="btn btn-info" onclick="location.href='@Url.Action("Edit",new { id = item.id_compras })';return false;">Editar <i class="fas fa-edit"></i></button>
+                <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.id_compras })';return false;">Detalles <i class="fas fa-info-circle"></i></button>
+                <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.id_compras })';return false;">Borrar <i class="fas fa-trash-alt"></i></button>
+            </td>
+        </tr>
+    }
 
 </table>
 
-<button class="btn btn-default" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio</button>
+<button class="btn btn-default btn-lg" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio <i class="fas fa-home"></i></button>
+<button class="btn btn-default btn-lg" onclick="location.href='@Url.Action("Print","compras")';return false;"><i class="fas fa-print" size="9x"></i> Generar Reporte</button>

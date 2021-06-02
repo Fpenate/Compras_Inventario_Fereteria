@@ -1,4 +1,5 @@
 ﻿using Compras_Inventario_Fereteria.Filters;
+using Rotativa;
 using System;
 using System.Collections.Generic;
 using System.Linq;

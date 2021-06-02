@@ -8,12 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using Compras_Inventario_Fereteria.Filters;
 using Compras_Inventario_Fereteria.Models;
+using Rotativa;
 
 namespace Compras_Inventario_Fereteria.Controllers
 {
     public class productosController : Controller
     {
-        private InventarioBDEntities1 db = new InventarioBDEntities1();
+        public InventarioBDEntities1 db = new InventarioBDEntities1();
 
         // GET: productos
         [AuthorizeUser(idOperacion: 1)]
@@ -140,6 +141,18 @@ namespace Compras_Inventario_Fereteria.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Reporte()
+        {
+            var productos = db.productos.Include(p => p.categoria).Include(p => p.proveedor);
+            return View(productos.ToList());
+        }
+        [AuthorizeUser(idOperacion: 2002)]
+        public ActionResult Print()
+        {
+            var productos = db.productos.Include(p => p.categoria).Include(p => p.proveedor);
+            return new Rotativa.ViewAsPdf("Reporte",productos);
         }
     }
 }

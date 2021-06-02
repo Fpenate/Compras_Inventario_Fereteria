@@ -5,35 +5,44 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Productos</h1>
 
+<div class="container">
+    <div class="jumbotron">
+        <h1>Productos <i class="fas fa-dolly-flatbed"></i></h1>
+    </div>
+</div>
 <p>
-    <button class="btn btn-success " onclick="location.href='@Url.Action("Create")';return false;">Crear Nuevo</button>
+    <button class="btn btn-success btn-lg " onclick="location.href='@Url.Action("Create")';return false;">Crear Nuevo <i class="fas fa-plus-square size:300x"></i></button>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre_producto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.categoria.tipo_categoria)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.proveedor.nombre)
-        </th>
-        <th></th>
-    </tr>
+
+
+<table class="table table-hover">
+    <thead >
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre_producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoria.tipo_categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.proveedor.nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
 @foreach (var item in Model) {
+<tbody>
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.nombre_producto)
@@ -59,8 +68,11 @@
             <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.id_producto })';return false;">Borrar</button>
         </td>
     </tr>
+</tbody>
 }
 
 </table>
 
-<button class="btn btn-default" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio</button>
+<button class="btn btn-default btn-lg" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio <i class="fas fa-home"></i></button>
+<button class="btn btn-default btn-lg" onclick="location.href='@Url.Action("Print","productos")';return false;"><i class="fas fa-print" size="9x"></i> Generar Reporte</button>
+

@@ -141,5 +141,18 @@ namespace Compras_Inventario_Fereteria.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Reporte()
+        {
+            var compras = db.compras.Include(c => c.productos).Include(c => c.usuarios);
+            return View(compras.ToList());
+        }
+        [AuthorizeUser(idOperacion: 2002)]
+        public ActionResult Print()
+        {
+            var compras = db.compras.Include(c => c.productos).Include(c => c.usuarios);
+            return new Rotativa.ViewAsPdf("Reporte", compras);
+        }
     }
+
 }

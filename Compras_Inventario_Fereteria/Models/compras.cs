@@ -34,7 +34,7 @@ namespace Compras_Inventario_Fereteria.Models
         public double total_compra { get; set; }
 
         [Required]
-        [Display(Name = "Fecha")]
+        [Display(Name = "Fecha de la Compra")]
         public System.DateTime fecha { get; set; }
     
         public virtual productos productos { get; set; }

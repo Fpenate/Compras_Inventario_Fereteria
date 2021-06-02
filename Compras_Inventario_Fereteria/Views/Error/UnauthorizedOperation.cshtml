@@ -2,36 +2,40 @@
 @{ ViewBag.Title = "UnauthorizedOperation";
                 Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>
-        Error, no tienes permiso para realizar esta Accion!
-    </h1>
-</section>
-<!-- Main content -->
-<section class="content">
-    <div class="col-md-offset-0 row justify-content-center">
-        <div class="error-content">
-            <h2><i class="fa fa-warning text-red"></i>  Sin autorización</h2>
-            @if (ViewBag.operacion != "")
-            {
+
+
+<div class="container">
+    <div class="jumbotron">
+        <section class="content-header">
+            <h1>
+                Error, no tienes permiso para realizar esta Accion!
+            </h1>
+        </section>
+        <section class="content">
+            <div class="col-md-offset-0 row justify-content-center">
+                <div class="error-content">
+                    <h2><i class="fa fa-warning text-red"></i>  Sin autorización</h2>
+                    @if (ViewBag.operacion != "")
+                    {
         <p>Operación @ViewBag.operacion </p>}
-            @if (ViewBag.modulo != "")
-            {
+                    @if (ViewBag.modulo != "")
+                    {
         <p>Modulo @ViewBag.modulo</p>}
-            @if (ViewBag.msjeErrorExcepcion != "")
-            {
+                    @if (ViewBag.msjeErrorExcepcion != "")
+                    {
         <p>@ViewBag.msjeErrorExcepcion</p>}
 
-            <img src="~/Content/images/error.jpg" width="500" height="300" />
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <button class="btn btn-default" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio</button>
+                    <img src="~/Content/images/error.jpg" width="500" height="300" />
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <button class="btn btn-default btn-lg" onclick="location.href='@Url.Action("Index","Home")';return false;">Inicio <i class="fas fa-home"></i></button>
+            </div>
+            <!-- /.error-page -->
+
+        </section>
     </div>
-    <!-- /.error-page -->
-    
-</section>
+</div>
 

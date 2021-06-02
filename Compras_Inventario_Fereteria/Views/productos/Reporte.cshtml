@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Compras_Inventario_Fereteria.Models.productos>
+@{
+    ViewBag.Title = "Reporte";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Reporte de Productos  </h1>
+        <p>Compras de Inventario de Ferreteria</p>
+    </div>
+</div>
+<div class="container">
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4>Reporte de productos a la fecha del Departamento de Compras</h4></div>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre_producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoria.tipo_categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.proveedor.nombre)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre_producto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categoria.tipo_categoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.proveedor.nombre)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4><u>Reporte de Poductos a la fecha : <b>@DateTime.Now </b></u></h4>
+        
+        </div>
+    </div>
+</div>
+
+
+
